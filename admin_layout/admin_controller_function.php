@@ -88,4 +88,25 @@ function uidExit($conn,$adminName){
  }
 
 
+ function createAdmin($conn,$adminName,$password){
+    $sql = "INSERT INTO admin(adminName,password) VALUES(?,?);";
+
+    $stmt = mysqli_stmt_init($conn);
+     if(!mysqli_stmt_prepare($stmt,$sql)){
+
+        header('location:../admin_layout/save_admin.php?error=stmtFailed');
+        exit();
+
+     }
+
+     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+     mysqli_stmt_bind_param($stmt,"ss",$adminName,$hashedPwd);
+     mysqli_stmt_execute($stmt);
+     mysqli_stmt_close($stmt);
+     header('location:../admin_layout/admin_controller_data.php?error=none');
+     exit();
+ }
+
+
+
 ?>

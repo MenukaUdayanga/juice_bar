@@ -28,27 +28,17 @@ if(isset($_POST['save_admin'])){
 
     
 
+
+	createAdmin($conn,$adminName,$password);
 	
 
-	$query = "INSERT INTO admin(adminName,password) VALUES('$adminName','$password');";
-
-	$query_run =mysqli_query($conn,$query);
-
-	if(!$query_run){
-
-		header("location:../admin_layout/admin_controller_data.php?error=notSent");
-		exit();
-
-	}
-
-	else{
-
-		header("location:../admin_layout/admin_controller_data.php?error=success");
-		exit();
-	}
 
 
 
+}else{
+    
+	header("location:../admin_layout/admin_controller_data.php?error=notSent");
+	exit();
 
 }
 
