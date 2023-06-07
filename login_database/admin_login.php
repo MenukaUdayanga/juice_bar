@@ -1,6 +1,6 @@
 <?php
     require_once 'dbc.php';
-    require_once 'db_function.php';
+    require_once '../admin_layout/admin_controller_function.php';
    
 
 ?>
@@ -9,13 +9,16 @@
 
 if(isset($_POST['submit'])){
 
-    $userName=$_POST['adminName'];
+    $adminName=$_POST['adminName'];
     $password=$_POST['password'];
 
 
-    $emptyRows = emptyRows($userName,$password);
 
-    if($emptyRows!== false){
+
+   
+    $emptyUid = emptyUid($adminName,$password);
+
+    if( $emptyUid!== false){
 
         header("location:../login_formate/admin_login.php?error=emptyInputs");
         exit();
@@ -23,8 +26,7 @@ if(isset($_POST['submit'])){
 
     
 
-    loginAdmin($conn,$userName,$password);
-
+    LoginAdmin($conn,$adminName,$password);
 
    
 }

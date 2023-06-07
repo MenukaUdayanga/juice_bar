@@ -105,7 +105,7 @@ session_start();
 
             }
 
-            else if(($_GET["error"]=="WrongLogin")){
+            else if(($_GET["error"]=="wrongLogin")){
               echo '<div class="alert">
               <span class="closebtn">&times;</span>  
               <strong>Error!</strong> Check Username and password..!

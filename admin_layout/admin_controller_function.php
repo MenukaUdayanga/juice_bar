@@ -107,6 +107,28 @@ function uidExit($conn,$adminName){
      exit();
  }
 
+ function LoginAdmin($conn, $adminName, $password) {
+    $uidExit = uidExit($conn, $adminName); // Call uidExit() function and assign its result to $uidExit
+
+    if ($uidExit === false) {
+        header("location:../login_formate/admin_login.php?error=wrongLogin");
+        exit();
+    }
+
+    $hashedPwd = $uidExit["password"];
+    $checkPwd = password_verify($password, $hashedPwd);
+
+    if ($checkPwd === false) {
+        header("location:../login_formate/admin_login.php?error=wrongLogin");
+        exit();
+    } else if ($checkPwd === true) {
+        session_start();
+        $_SESSION["id"] = $uidExit["id"];
+        $_SESSION["adminName"] = $uidExit["adminName"];
+        header("location:../admin_layout/dashboard.php");
+        exit();
+    }
+}
 
 
 ?>

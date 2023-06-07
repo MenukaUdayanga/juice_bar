@@ -175,46 +175,7 @@ function LoginUser($conn, $userName,$password){
 }
 
 
-// Admin login section
 
-    function emptyRows($userName,$password){
-
-        $result;
-
-        if(empty($userName) || empty($password)){
-
-            return true;
-        }
-
-        else{
-
-            return false;
-        }
-
-        return $result;
-    }
-
-
-  
-
-
-    function loginAdmin($conn, $userName, $password) {
-        $query = "SELECT * FROM admin WHERE adminName = ? AND password = ?";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "ss", $userName, $password);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-    
-        if (mysqli_num_rows($result) == 0) {
-            header("location: ../login_formate/admin_login.php?error=WrongLogin");
-        } else {
-            session_start();
-            $_SESSION["id"];
-            $_SESSION["adminName"];
-            header("location: ../admin_layout/dashboard.php?error=none");
-            exit();
-        }
-    }
     
 
 
