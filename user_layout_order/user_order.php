@@ -10,7 +10,7 @@ session_start();
 <html>
   <head>
 
-  <link rel="stylesheet" href="user_page.css">
+  <link rel="stylesheet" href="../user_layout/user_page.css">
   <style>
 
         *{
@@ -47,6 +47,50 @@ session_start();
 
         .active {
         background-color: #04AA6D;
+        }
+
+
+        /* User Order Form*/
+
+        body {
+        font-family: Arial;
+        }
+
+        input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        }
+
+        button[type=submit] {
+        width: 100%;
+        background-color: #04AA6D;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+
+        button[type=submit]:hover {
+        background-color: #45a049;
+        }
+
+        div.container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        
+        }
+
+        .fileds{
+            width:18%;
+            margin-right:3%;
+            height:35px;
         }
 
        
@@ -92,9 +136,56 @@ else{
     
 <div class="container" style="margin:20px;">
 
-<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
+<div class="layout" style="  background-color: white; width: 70%; height:100%; margin-left:16%;
+ padding:7px;">
 
-   <h1>I can do that</h1>
+<h1 style="margin-bottom:2%;">Coustomer Order Form</h1>
+
+
+<div class="container">
+  <form action="/action_page.php">
+    <label for="fname">First Name</label>
+    <input type="text"  name="firstname" placeholder="Your name.." required>
+
+    <label for="lname">Last Name</label>
+    <input type="text"  name="lastname" placeholder="Your last name.." required>
+
+    
+    <label for="lname">Phone Number</label>
+    <input type="text"  name="phone" placeholder="077-1757836"required>
+
+    <label for="email">Email Address </label>
+    <input type="text"  name="email" placeholder="Your email .." required>
+     
+    <label for="address">Home Address </label>
+    <textarea rows="4" cols="123" name="comment" form="usrform" name="address" >
+    </textarea>
+
+    <label for="juice">Juice Type</label>
+    <select  name="juice">
+      <option value="australia">Pineapple Juice</option>
+      <option value="canada">Apple Juice</option>
+      <option value="canada">Orange Juice</option>
+      <option value="canada">Avocado Juice</option>
+    </select>
+
+    <br>
+
+    <label for="email">Glass of The Juice</label>
+    <input class="fileds" type="number"  name="email" placeholder="Number of Glass .." required>
+    
+    <label for="email">Required Date</label>
+    <input class="fileds" type="Date"  name="email" placeholder="Your email .." required>
+
+    <label for="email">Required Time</label>
+    <input class="fileds" type="time"  name="email" placeholder="Your email .." required>
+
+    
+    <br>
+
+    <button type="submit" name="order">Order Now</button>
+  </form>
+</div>
 
 </div>
 
