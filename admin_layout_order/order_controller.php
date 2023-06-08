@@ -10,8 +10,6 @@ session_start();
 <html>
   <head>
 
-  <link rel="stylesheet" href="admin.css">
-
   <link rel="stylesheet" href="../user_layout/user_page.css">
   <style>
 
@@ -51,38 +49,6 @@ session_start();
         background-color: #04AA6D;
         }
 
-        /* error handling */
-
-        .alert {
-            padding: 20px;
-            background-color: #f44336;
-            color: white;
-            opacity: 0.7;
-            transition: opacity 0.6s;
-            margin-bottom: 15px;
-            width:30%;
-            }
-
-            .alert.success {background-color: #04AA6D;}
-            .alert.info {background-color: #2196F3;}
-            .alert.warning {background-color: #f05951;}
-
-            .closebtn {
-            margin-left: 15px;
-            color: white;
-            font-weight: bold;
-            float: right;
-            font-size: 22px;
-            line-height: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-           
-            }
-
-            .closebtn:hover {
-            color: black;
-            }
-
        
 </style>
  
@@ -119,79 +85,7 @@ session_start();
      
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-<h2>Only Main Admin Can Access</h2>
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Access</button>
-
-<?php 
-        if(isset($_GET["error"])){
-            
-            if(($_GET["error"]=="emptyFileds")){
-                echo '<div class="alert">
-                <span class="closebtn">&times;</span> 
-                <strong> Error!</strong> Required to fill all the fields..!
-              </div>';
-
-              }
-
-               else if(($_GET["error"]=="WrongLogin")){
-                echo '<div class="alert">
-                <span class="closebtn">&times;</span>  
-                <strong>Error!</strong> Check your UserName and Password..!
-              </div>';
-
-              }
-
-       }
-
-        ?>
-
-
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="admin_controller_login_fun.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-    
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>AdminName</b></label>
-      <input type="text" placeholder="Enter AdminName" name="adminName" >
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password">
-        
-      <button type="submit" name="submit">Access</button>
-
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-    
-    </div>
-  </form>
-
-
-
-
-
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
+   <h1>I can do that so......</h1>
 
 </div>
 
@@ -211,7 +105,7 @@ window.onclick = function(event) {
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="select_users.php">
+                    <a href="../admin_layout/select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -220,7 +114,7 @@ window.onclick = function(event) {
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="admin_controller_login.php">
+                    <a href="../admin_layout/admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                             Admin Controller
@@ -229,7 +123,7 @@ window.onclick = function(event) {
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="../admin_layout_order/order_controller.php">
+                    <a href="order_controller.php">
                     <i class="fa fa-book" aria-hidden="true"></i>
                         <span class="nav-text">
                             Order Controller

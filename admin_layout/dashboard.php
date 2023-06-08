@@ -123,10 +123,10 @@ session_start();
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="#">
-                       <i class="fa fa-camera-retro fa-2x"></i>
+                    <a href="../admin_layout_order/order_controller.php">
+                    <i class="fa fa-book" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Survey Photos
+                            Order Controller
                         </span>
                     </a>
                    
