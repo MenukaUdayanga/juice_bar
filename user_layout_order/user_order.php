@@ -143,7 +143,7 @@ else{
 
 
 <div class="container">
-  <form action="/action_page.php">
+  <form action="order_save.php" method="POST">
     <label for="fname">First Name</label>
     <input type="text"  name="firstname" placeholder="Your name.." required>
 
@@ -158,27 +158,27 @@ else{
     <input type="text"  name="email" placeholder="Your email .." required>
      
     <label for="address">Home Address </label>
-    <textarea rows="4" cols="123" name="comment" form="usrform" name="address" >
+    <textarea rows="4" cols="123"  name="address" >
     </textarea>
 
     <label for="juice">Juice Type</label>
     <select  name="juice">
-      <option value="australia">Pineapple Juice</option>
-      <option value="canada">Apple Juice</option>
-      <option value="canada">Orange Juice</option>
-      <option value="canada">Avocado Juice</option>
+      <option >Pineapple Juice</option>
+      <option >Apple Juice</option>
+      <option >Orange Juice</option>
+      <option >Avocado Juice</option>
     </select>
 
     <br>
 
-    <label for="email">Glass of The Juice</label>
-    <input class="fileds" type="number"  name="email" placeholder="Number of Glass .." required>
+    <label for="number">Glass of The Juice</label>
+    <input class="fileds" type="number"  name="number" placeholder="Number of Glass .." required>
     
-    <label for="email">Required Date</label>
-    <input class="fileds" type="Date"  name="email" placeholder="Your email .." required>
+    <label for="date">Required Date</label>
+    <input class="fileds" type="Date"  name="date"  required>
 
-    <label for="email">Required Time</label>
-    <input class="fileds" type="time"  name="email" placeholder="Your email .." required>
+    <label for="time">Required Time</label>
+    <input class="fileds" type="time"  name="time"  required>
 
     
     <br>
