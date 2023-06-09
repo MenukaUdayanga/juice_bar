@@ -3,13 +3,14 @@
 <?php 
 
 session_start();
+require_once "../login_database/dbc.php";
 
 ?>
 
 
 <html>
   <head>
-
+   <link rel="stylesheet" href="order.css">
   <link rel="stylesheet" href="../user_layout/user_page.css">
   <style>
 
@@ -80,14 +81,137 @@ session_start();
 
 
     
-<div class="container" style="margin:20px;">
+<!-- Search bar form -->
 
-     
-<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
+<div class="container" style="margin: 20px;">
+    <div class="layout" style="background-color: white; width: 90%; height: 100%; float: right; padding: 7px;">
+      <h1>User Controller Table</h1>
+      <form action="" method="POST" style="margin:1%;">
+        <input type="text" id="search" name="search" placeholder="Search Data...." style="width:20%; height:5%; color:blue; 
+        font-size: 20px; border:2px solid blue; padding:15px; margin-right:3%; margin-right:1%; ">
+        <button type="submit" name="submit" value="Submit" style="width:5%; height:5%; background-color:black; color:white; cursor:pointer;">Search</button>
+        
+         <!-- Show all form -->
 
-   <h1>I can do that so......</h1>
+        <button type="submit" name="click" style = "background-color:#73dae6; color:black; float:right; display:inline; 
+        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; border-radius: 10px;">Show All Data</button>
+      </form>
 
-</div>
+
+   
+
+      <form action="" method=POST style="";>
+       
+      </form>
+
+      <table id="customers">
+        <tr>
+          <th>Order Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Juice Type</th>
+          <th>Glass</th>
+          <th>Date</th>
+          <th>Time</th>
+          
+        </tr>
+
+
+<?php
+
+  if(isset($_POST['click'])){
+
+     $query = "SELECT*FROM customerorder ;";
+
+     $query_run = mysqli_query($conn, $query);
+
+     if(mysqli_num_rows($query_run)>0){
+      while($orders=mysqli_fetch_assoc($query_run)){
+        ?>
+
+<tr>
+          <td><?php echo $orders['id']; ?></td>
+          <td><?php echo $orders['firstName']; ?></td>
+          <td><?php echo $orders['lastName']; ?></td>
+          <td><?php echo $orders['phoneNumber']; ?></td>
+          <td><?php echo $orders['email']; ?></td>
+          <td><?php echo $orders['address']; ?></td>
+          <td><?php echo $orders['juiceType']; ?></td>
+          <td><?php echo $orders['glass']; ?></td>
+          <td><?php echo $orders['date']; ?></td>
+          <td><?php echo $orders['time']; ?></td>
+         
+         
+          <!-- <td>
+            <form action="select_user_code.php" method="POST">
+            <button onclick="return confirmDelete();" type="submit" name="delete_users" value="<?php echo $users['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+                Remove
+              </button>
+            </form>
+          </td> -->
+        </tr>
+        <?php
+
+      }
+     }else{echo "NOt found data";}
+
+  }
+
+  ?>
+
+
+
+  
+<?php 
+   
+        
+if (isset($_POST['submit'])) {
+  $search = $_POST['search'];
+
+  if (!empty($search)) {
+    $query = "SELECT * FROM customerorder WHERE firstName LIKE '%$search%' OR lastName LIKE '%$search%' OR phoneNumber LIKE '%$search%'
+    OR email LIKE '%$search%' OR address LIKE '%$search%' OR juiceType LIKE '%$search%' OR glass LIKE '%$search%' OR date LIKE '%$search%' OR time LIKE '%$search%';";
+    $query_run = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($query_run) > 0) {
+      while ($orders = mysqli_fetch_assoc($query_run)) {
+        ?>
+        <tr>
+        <td><?php echo $orders['id']; ?></td>
+          <td><?php echo $orders['firstName']; ?></td>
+          <td><?php echo $orders['lastName']; ?></td>
+          <td><?php echo $orders['phoneNumber']; ?></td>
+          <td><?php echo $orders['email']; ?></td>
+          <td><?php echo $orders['address']; ?></td>
+          <td><?php echo $orders['juiceType']; ?></td>
+          <td><?php echo $orders['glass']; ?></td>
+          <td><?php echo $orders['date']; ?></td>
+          <td><?php echo $orders['time']; ?></td>
+
+          <!-- <td>
+          <form action="select_user_code.php" method="POST">
+          <button onclick="return confirmDelete();" type="submit" name="delete_users" value="<?php echo $users['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+          Remove
+          </button>
+          </form>
+
+          
+          </td> -->
+        </tr>
+        <?php
+      }
+    } else {
+      echo '<tr><td colspan="7"><h1 style="color: red;">Data not found</h1></td></tr>';
+    }
+  } else {
+    // Handle empty search field here
+    echo '<tr><td colspan="7"><h1 style="color: red;">Please enter a search query</h1></td></tr>';
+  }
+}
+?>
 
 
 <nav class="main-menu">
