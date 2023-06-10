@@ -3,6 +3,7 @@
 <?php 
 
 session_start();
+require_once "../login_database/dbc.php";
 
 ?>
 
@@ -163,11 +164,29 @@ else{
 
     <label for="juice">Juice Type</label>
     <select  name="juice">
-      <option >Pineapple Juice</option>
-      <option >Apple Juice</option>
-      <option >Orange Juice</option>
-      <option >Avocado Juice</option>
+        <?php 
+        $query = "SELECT*FROM additem;";
+
+        $query_run = mysqli_query($conn, $query);
+
+        if($query_run){
+
+            while($row=mysqli_fetch_assoc($query_run)){
+
+                echo'<option value='.$row['item'].'>'.$row['item'].'</option>';
+            }
+        }
+
+        else{ echo"Error executing query:".mysqli_error($conn);}
+        
+      
+        
+        ?>
+
     </select>
+    
+     
+   
 
     <br>
 

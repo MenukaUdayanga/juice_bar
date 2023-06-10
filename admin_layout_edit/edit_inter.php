@@ -85,7 +85,18 @@ session_start();
      
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-   <h1>I can do that</h1>
+   <h1>I can do that so far</h1>
+
+    <form action="edit_code.php" method="POST">
+
+    <label>Enter Juice</label>
+   <input type="text" name="item" id="">
+
+   <button type="submit" name="add">Add Item</button>
+    
+</form>
+
+   
 
 </div>
 
@@ -132,7 +143,7 @@ session_start();
                    
                 </li>
                 <li>
-                    <a href="../admin_layout_edit/edit_inter.php">
+                    <a href="#">
                         <i class="fa fa-film fa-2x"></i>
                         <span class="nav-text">
                             Surveying Tutorials
