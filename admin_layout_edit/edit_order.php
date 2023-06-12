@@ -121,6 +121,8 @@ require_once "../login_database/dbc.php";
      
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px; margin-top:3%;">
 
+<a style="float:right; " href="../admin_layout_edit/edit_inter.php"><i style="font-size: 40px;" class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+    
 
 <?php
 

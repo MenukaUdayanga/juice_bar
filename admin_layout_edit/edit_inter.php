@@ -51,6 +51,41 @@ require_once "../login_database/dbc.php";
         background-color: #04AA6D;
         }
 
+
+        /* Error Handling */
+
+        .alert {
+        margin-left:10%;
+        margin-top:10px;
+        padding: 10px;
+        background-color: #c41831;
+        color: white;
+        opacity: 0.7;
+        transition: opacity 0.6s;
+        margin-bottom: 15px;
+        width:25%;
+       
+      }
+
+      .alert.success {background-color: #04AA6D;}
+      .alert.info {background-color: #2196F3;}
+      .alert.warning {background-color: #f05951;}
+
+      .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .closebtn:hover {
+        color: black;
+      }
+
        
 </style>
  
@@ -99,6 +134,36 @@ require_once "../login_database/dbc.php";
    <button type="submit" name="add" style="width:9%; height:40px; margin-left:1%; color:white; 
    background-color:#d61834; cursor: pointer; border-radius: 10px;">Add Item</button>
 
+
+ <!-- Login page php error handling -->
+          
+      <?php 
+
+      if(isset($_GET["error"])){
+
+        if(($_GET["error"]=="empty")){
+          echo '<div class="alert">
+          <span class="closebtn">&times;</span> 
+          <strong> Error!</strong>The text field is empty..!
+        </div>';
+
+        }
+
+        else if(($_GET["error"]=="uidExit")){
+          echo '<div class="alert">
+          <span class="closebtn">&times;</span>  
+          <strong>Error!</strong> That item already entered..!
+        </div>';
+
+        }
+
+        
+
+        }
+
+        ?>
+
+
    </div>
     
 </form>
@@ -113,7 +178,10 @@ require_once "../login_database/dbc.php";
 
         <button type="submit" name="click" style = "background-color:#73dae6; color:black; float:right; display:inline; 
         width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; border-radius: 10px;">Show All Data</button>
+
       </form>
+
+      
 
 
    
