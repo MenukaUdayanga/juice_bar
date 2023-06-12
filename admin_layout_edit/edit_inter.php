@@ -122,7 +122,7 @@ require_once "../login_database/dbc.php";
      
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-   <h1>User Controller Table</h1>
+   <h1>Juice Item Controller Table</h1>
 
     <form action="edit_code.php" method="POST">
 
@@ -310,7 +310,7 @@ if (isset($_POST['submit'])) {
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="select_users.php">
+                    <a href="../admin_layout/select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -319,7 +319,7 @@ if (isset($_POST['submit'])) {
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="admin_controller_login.php">
+                    <a href="../admin_layout/admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                             Admin Controller
@@ -337,10 +337,10 @@ if (isset($_POST['submit'])) {
                    
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-film fa-2x"></i>
+                    <a href="edit_inter.php">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Surveying Tutorials
+                            Juice Item Controller
                         </span>
                     </a>
                 </li>

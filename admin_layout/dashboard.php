@@ -132,10 +132,10 @@ session_start();
                    
                 </li>
                 <li>
-                    <a href="../admin_layout_edit/edit_inter.php">
-                        <i class="fa fa-film fa-2x"></i>
+                <a href="../admin_layout_edit/edit_inter.php">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Surveying Tutorials
+                            Juice Item Controller
                         </span>
                     </a>
                 </li>

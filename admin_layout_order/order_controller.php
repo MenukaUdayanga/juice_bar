@@ -256,18 +256,18 @@ if (isset($_POST['submit'])) {
                    
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-film fa-2x"></i>
+                <a href="../admin_layout_edit/edit_inter.php">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Surveying Tutorials
+                            Juice Item Controller
                         </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-book fa-2x"></i>
+                <a href="#">
+                       <i class="fa fa-cogs fa-2x"></i>
                         <span class="nav-text">
-                           Surveying Jobs
+                            Tools & Resources
                         </span>
                     </a>
                 </li>
