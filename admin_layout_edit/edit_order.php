@@ -12,7 +12,7 @@ require_once "../login_database/dbc.php";
   <head>
 
   <link rel="stylesheet" href="../user_layout/user_page.css">
-  <link rel="stylesheet" href="item.css">
+  
   <style>
 
         *{
@@ -51,6 +51,40 @@ require_once "../login_database/dbc.php";
         background-color: #04AA6D;
         }
 
+
+        /* Update Form */
+
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  button[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+   
+  }
+
        
 </style>
  
@@ -85,144 +119,58 @@ require_once "../login_database/dbc.php";
 <div class="container" style="margin:20px;">
 
      
-<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
-
-   <h1>User Controller Table</h1>
-
-    <form action="edit_code.php" method="POST">
-
-     <div style="margin:2%;">
-
-    <label style=" font-size:25px;">Enter Juice</label>
-   <input type="text" name="item" id="" placeholder="Enter Juice Name" style="border: 2px solid blue; width:17%; height:40px; font-size:20px;margin-left:1%;">
-
-   <button type="submit" name="add" style="width:9%; height:40px; margin-left:1%; color:white; 
-   background-color:#d61834; cursor: pointer; border-radius: 10px;">Add Item</button>
-
-   </div>
-    
-</form>
-
-
-      <form action="" method="POST" style="margin:1%;">
-        <input type="text" id="search" name="search" placeholder="Search Data...." style="width:20%; height:5%; color:blue; 
-        font-size: 20px; border:2px solid blue; padding:15px; margin-right:3%; margin-right:1%; ">
-        <button type="submit" name="submit" value="Submit" style="width:5%; height:5%; background-color:black; color:white; cursor:pointer;">Search</button>
-        
-         <!-- Show all form -->
-
-        <button type="submit" name="click" style = "background-color:#73dae6; color:black; float:right; display:inline; 
-        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; border-radius: 10px;">Show All Data</button>
-      </form>
-
-
-   
-
-      <form action="" method=POST style="";>
-       
-      </form>
-
-      <table id="customers">
-        <tr>
-          <th>Item Id</th>
-          <th>Juice Name</th>
-          <th>Edit</th>
-          <th>Remove</th>
-          
-        </tr>
+<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px; margin-top:3%;">
 
 
 <?php
 
-  if(isset($_POST['click'])){
+if(isset($_GET['id'])){
 
-     $query = "SELECT*FROM additem;";
+    $items_id = mysqli_real_escape_string($conn,($_GET['id']));
+    $query = "SELECT*FROM additem WHERE id='$items_id';";
+    $query_run=mysqli_query($conn,$query);
 
-     $query_run = mysqli_query($conn, $query);
+    if(mysqli_num_rows($query_run)>0){
 
-     if(mysqli_num_rows($query_run)>0){
-      while($items=mysqli_fetch_assoc($query_run)){
-        ?>
+        $items = mysqli_fetch_array($query_run);
 
-<tr>
-          <td><?php echo $items['id']; ?></td>
-          <td><?php echo $items['item']; ?></td>
-
-
-          <td>
-
-          <a href="edit_order.php?id=<?= $items['id']; ?>"  style="  text-decoration: none; background-color:#32459c ; color: white; height: 30px; cursor: pointer; padding: 5px;" >Edit</a>
-          </td>
-          
-         
-          <td>
-            <form action="function.php" method="POST">
-            <button onclick="return confirmDelete();" type="submit" name="delete_item" value="<?php echo $items['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
-              Delete
-              </button>
-            </form>
-          </td>
-        </tr>
-        <?php
-
-      }
-     }else{echo "NOt found data";}
-
-  }
-
-  ?>
-
-
-
-  
-<?php 
-   
         
-if (isset($_POST['submit'])) {
-  $search = $_POST['search'];
 
-  if (!empty($search)) {
-    $query = "SELECT * FROM additem WHERE item LIKE '%$search%';";
-    $query_run = mysqli_query($conn, $query);
+         ?>
 
-    if (mysqli_num_rows($query_run) > 0) {
-      while ($items = mysqli_fetch_assoc($query_run)) {
-        ?>
-        <tr>
-         
-          <td><?php echo $items['id']; ?></td>
-          <td><?php echo $items['item']; ?></td>
 
-          <td>
+       
+                <h1 style="padding:20px;">Juice Items Update Form</h1>
 
-          <a href="edit_order.php?id=<?= $items['id']; ?>"  style="  text-decoration: none; background-color:#32459c ; color: white; height: 30px; cursor: pointer; padding: 5px;" >Edit</a>
-          </td>
+            <div>
+            <form action="function.php" method="POST">
+                
+                <input type="hidden" value="<?= $items['id'];?>" name="id">
 
-          <td>
+                <label for="lname">Juice Item</label>
+                <input type="text" value="<?= $items['item'];?>" name="juice" placeholder="Your last name..">
+            
+                <button type="submit" name="update">Update Item</button>
+            </form>
+            </div>
 
-          <form action="function.php" method="POST">
-          <button onclick="return confirmDelete();" type="submit" name="delete_item" value="<?php echo $items['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
-          Delete
-          </button>
-          </form>
+<?php 
 
-          
-          </td>
-        </tr>
-        <?php
-      }
-    } else {
-      echo '<tr><td colspan="7"><h1 style="color: red;">Data not found</h1></td></tr>';
-    }
-  } else {
-    // Handle empty search field here
-    echo '<tr><td colspan="7"><h1 style="color: red;">Please enter a search query</h1></td></tr>';
-  }
 }
+
+               else{
+
+                echo"<h4>No such Id Found</h4>";
+              
+            }
+
+            }
+
 ?>
 
+  
 
-   
+  
 
 </div>
 
@@ -269,7 +217,7 @@ if (isset($_POST['submit'])) {
                    
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../admin_layout_edit/edit_inter.php">
                         <i class="fa fa-film fa-2x"></i>
                         <span class="nav-text">
                             Surveying Tutorials
@@ -323,11 +271,6 @@ if (isset($_POST['submit'])) {
         </nav> 
         
       
-        <script>
-        function confirmDelete() {
-        return confirm('Are you sure to delete this user?');
-          }
-        </script>
 
   </body>
 
