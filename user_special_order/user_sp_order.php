@@ -3,6 +3,7 @@
 <?php 
 
 session_start();
+require_once "../login_database/dbc.php";
 
 ?>
 
@@ -10,7 +11,7 @@ session_start();
 <html>
   <head>
 
-  <link rel="stylesheet" href="user_page.css">
+  <link rel="stylesheet" href="../user_layout/user_page.css">
   <style>
 
         *{
@@ -47,6 +48,50 @@ session_start();
 
         .active {
         background-color: #04AA6D;
+        }
+
+
+        /* User Order Form*/
+
+        body {
+        font-family: Arial;
+        }
+
+        input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        }
+
+        button[type=submit] {
+        width: 100%;
+        background-color: blue;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+
+        button[type=submit]:hover {
+        background-color: #01022b;
+        }
+
+        div.container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        
+        }
+
+        .fileds{
+            width:18%;
+            margin-right:2%;
+            height:35px;
         }
 
        
@@ -92,9 +137,63 @@ else{
     
 <div class="container" style="margin:20px;">
 
-<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
+<div class="layout" style="  background-color: white; width: 70%; height:100%; margin-left:16%;
+ padding:7px;">
 
-   <h1>I can do that</h1>
+<h1 style="margin-bottom:2%;">Coustomer Special Order Form</h1>
+
+
+<div class="container">
+  <form action="sp_order_function.php" method="POST">
+    <label for="fname">First Name</label>
+    <input type="text"  name="firstname" placeholder="Your name.." required>
+
+    <label for="lname">Last Name</label>
+    <input type="text"  name="lastname" placeholder="Your last name.." required>
+
+    
+    <label for="lname">Phone Number</label>
+    <input type="text"  name="phone" placeholder="077-1757836" required>
+
+    <label for="email">Email Address </label>
+    <input type="text"  name="email" placeholder="Your email .." required>
+     
+    <label for="address">Home Address </label>
+    <textarea rows="4" cols="123"  name="address" >
+    </textarea>
+
+    <br>
+    <br>
+
+
+    <label for="address">Type About Special Order</label>
+    <textarea rows="8" cols="123"  name="spOrder" >
+    </textarea>
+     
+     
+   
+
+    <br>
+    <br>
+    <br>
+
+    
+    
+    <label for="date">Date of order</label>
+    <input class="fileds" type="Date"  name="dateOr"  required>
+
+    <label for="date">Required Date of order</label>
+    <input class="fileds" type="Date"  name="dateRq"  required>
+
+    <label for="time">Required Time</label>
+    <input class="fileds" type="time"  name="time"  required>
+
+    
+    <br>
+
+    <button type="submit" name="order">Order Now</button>
+  </form>
+</div>
 
 </div>
 
@@ -123,10 +222,10 @@ else{
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="../user_special_order/user_sp_order.php">
+                    <a href="#">
                        <i class="fa fa-comments fa-2x"></i>
                         <span class="nav-text">
-                           User Special Order
+                            Group Hub Forums
                         </span>
                     </a>
                     
