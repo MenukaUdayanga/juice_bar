@@ -10,7 +10,7 @@ require_once "../login_database/dbc.php";
 
 <html>
   <head>
-   <link rel="stylesheet" href="order.css">
+   <link rel="stylesheet" href="../admin_layout_order/order.css">
   <link rel="stylesheet" href="../user_layout/user_page.css">
   <style>
 
@@ -85,7 +85,7 @@ require_once "../login_database/dbc.php";
 
 <div class="container" style="margin: 20px;">
     <div class="layout" style="background-color: white; width: 90%; height: 100%; float: right; padding: 7px;">
-      <h1>User Controller Table</h1>
+      <h1>User Special Order Controller Table</h1>
       <form action="" method="POST" style="margin:1%;">
         <input type="text" id="search" name="search" placeholder="Search Data...." style="width:20%; height:5%; color:blue; 
         font-size: 20px; border:2px solid blue; padding:15px; margin-right:3%; margin-right:1%; ">
@@ -112,11 +112,11 @@ require_once "../login_database/dbc.php";
           <th>Phone Number</th>
           <th>Email</th>
           <th>Address</th>
-          <th>Juice Type</th>
-          <th>Glass</th>
+          <th>Description</th>
           <th>Order date</th>
-          <th>Required Date</th>
+          <th>Need date</th>
           <th>Time</th>
+         
           
         </tr>
 
@@ -125,7 +125,7 @@ require_once "../login_database/dbc.php";
 
   if(isset($_POST['click'])){
 
-     $query = "SELECT*FROM customerorder ;";
+     $query = "SELECT*FROM userspecialorder ;";
 
      $query_run = mysqli_query($conn, $query);
 
@@ -137,13 +137,12 @@ require_once "../login_database/dbc.php";
           <td><?php echo $orders['id']; ?></td>
           <td><?php echo $orders['firstName']; ?></td>
           <td><?php echo $orders['lastName']; ?></td>
-          <td><?php echo $orders['phoneNumber']; ?></td>
+          <td><?php echo $orders['PhoneNumber']; ?></td>
           <td><?php echo $orders['email']; ?></td>
           <td><?php echo $orders['address']; ?></td>
-          <td><?php echo $orders['juiceType']; ?></td>
-          <td><?php echo $orders['glass']; ?></td>
+          <td><?php echo $orders['special_order_about']; ?></td>
           <td><?php echo $orders['orderDate']; ?></td>
-          <td><?php echo $orders['needDate']; ?></td>
+          <td><?php echo $orders['requiredDate']; ?></td>
           <td><?php echo $orders['time']; ?></td>
          
          
@@ -174,24 +173,23 @@ if (isset($_POST['submit'])) {
   $search = $_POST['search'];
 
   if (!empty($search)) {
-    $query = "SELECT * FROM customerorder WHERE firstName LIKE '%$search%' OR lastName LIKE '%$search%' OR phoneNumber LIKE '%$search%'
-    OR email LIKE '%$search%' OR address LIKE '%$search%' OR juiceType LIKE '%$search%' OR glass LIKE '%$search%' OR orderDate LIKE '%$search%' OR needDate  LIKE '%$search%' OR   time LIKE '%$search%';";
+    $query = "SELECT * FROM userspecialorder WHERE firstName LIKE '%$search%' OR lastName LIKE '%$search%' OR PhoneNumber LIKE '%$search%'
+    OR email LIKE '%$search%' OR address LIKE '%$search%' OR special_order_about LIKE '%$search%' OR orderDate LIKE '%$search%' OR requiredDate LIKE '%$search%' OR time  LIKE '%$search%' ;";
     $query_run = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
       while ($orders = mysqli_fetch_assoc($query_run)) {
         ?>
         <tr>
-        <td><?php echo $orders['id']; ?></td>
+          <td><?php echo $orders['id']; ?></td>
           <td><?php echo $orders['firstName']; ?></td>
           <td><?php echo $orders['lastName']; ?></td>
-          <td><?php echo $orders['phoneNumber']; ?></td>
+          <td><?php echo $orders['PhoneNumber']; ?></td>
           <td><?php echo $orders['email']; ?></td>
           <td><?php echo $orders['address']; ?></td>
-          <td><?php echo $orders['juiceType']; ?></td>
-          <td><?php echo $orders['glass']; ?></td>
+          <td><?php echo $orders['special_order_about']; ?></td>
           <td><?php echo $orders['orderDate']; ?></td>
-          <td><?php echo $orders['needDate']; ?></td>
+          <td><?php echo $orders['requiredDate']; ?></td>
           <td><?php echo $orders['time']; ?></td>
 
           <!-- <td>
@@ -267,7 +265,7 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
                 <li>
-                <a href="../admin_layout_sp_order_controller/sp_order_controller.php">
+                <a href="sp_order_controller.php">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
                         <span class="nav-text">
                            Special Order Controller

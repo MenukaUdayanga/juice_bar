@@ -124,7 +124,7 @@ else{
                 </li>
                 <li class="has-subnav">
                     <a href="../user_special_order/user_sp_order.php">
-                       <i class="fa fa-comments fa-2x"></i>
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
                         <span class="nav-text">
                            User Special Order
                         </span>

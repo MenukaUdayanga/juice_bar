@@ -12,11 +12,12 @@ if(isset($_POST['order'])){
     $address = $_POST["address"];
     $juice = $_POST["juice"];
     $number = $_POST["number"];
-    $date = $_POST["date"];
+    $orderDate = $_POST["orderDate"];
+    $needDate = $_POST["needDate"];
     $time = $_POST["time"];
 
-    $query = "INSERT INTO customerorder(firstName,lastName,phoneNumber,email,address,juiceType,glass,date,time)
-    values( '$firstName', '$lastName', '$phone', '$email', '$address', '$juice', '$number','$date','$time');";
+    $query = "INSERT INTO customerorder(firstName,lastName,phoneNumber,email,address,juiceType,glass,orderDate,needDate,time)
+    values( '$firstName', '$lastName', '$phone', '$email', '$address', '$juice', '$number','$orderDate',' $needDate','$time');";
 
     $query_run=mysqli_query($conn,$query);
 

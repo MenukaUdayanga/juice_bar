@@ -90,8 +90,9 @@ require_once "../login_database/dbc.php";
 
         .fileds{
             width:18%;
-            margin-right:3%;
+            margin-right:19%;
             height:35px;
+            margin-bottom:2%;
         }
 
        
@@ -192,11 +193,14 @@ else{
 
     <label for="number">Glass of The Juice</label>
     <input class="fileds" type="number"  name="number" placeholder="Number of Glass .." required>
-    
-    <label for="date">Required Date</label>
-    <input class="fileds" type="Date"  name="date"  required>
 
-    <label for="time">Required Time</label>
+    <label for="date">Date of order</label>
+    <input class="fileds" type="date"  name="orderDate"  required>
+    
+    <label for="date">Need Date of order</label>
+    <input class="fileds" type="date"  name="needDate"  required>
+
+    <label for="time">Need of Time</label>
     <input class="fileds" type="time"  name="time"  required>
 
     
@@ -233,10 +237,10 @@ else{
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="#">
-                       <i class="fa fa-comments fa-2x"></i>
+                <a href="../user_special_order/user_sp_order.php">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Group Hub Forums
+                           User Special Order
                         </span>
                     </a>
                     

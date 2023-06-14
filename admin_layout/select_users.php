@@ -220,10 +220,10 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-book fa-2x"></i>
+                <a href="../admin_layout_sp_order_controller/sp_order_controller.php">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
                         <span class="nav-text">
-                           Surveying Jobs
+                           Special Order Controller
                         </span>
                     </a>
                 </li>
