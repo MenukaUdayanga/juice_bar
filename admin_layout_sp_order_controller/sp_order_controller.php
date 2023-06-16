@@ -116,6 +116,7 @@ require_once "../login_database/dbc.php";
           <th>Order date</th>
           <th>Need date</th>
           <th>Time</th>
+          <th>Action</th>
          
           
         </tr>
@@ -146,13 +147,13 @@ require_once "../login_database/dbc.php";
           <td><?php echo $orders['time']; ?></td>
          
          
-          <!-- <td>
-            <form action="select_user_code.php" method="POST">
-            <button onclick="return confirmDelete();" type="submit" name="delete_users" value="<?php echo $users['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+          <td>
+            <form action="sp_order_function.php" method="POST">
+            <button onclick="return confirmDelete();" type="submit" name="delete_orders" value="<?php echo $orders['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
                 Remove
               </button>
             </form>
-          </td> -->
+          </td>
         </tr>
         <?php
 
@@ -192,15 +193,13 @@ if (isset($_POST['submit'])) {
           <td><?php echo $orders['requiredDate']; ?></td>
           <td><?php echo $orders['time']; ?></td>
 
-          <!-- <td>
-          <form action="select_user_code.php" method="POST">
-          <button onclick="return confirmDelete();" type="submit" name="delete_users" value="<?php echo $users['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
-          Remove
-          </button>
-          </form>
-
-          
-          </td> -->
+          <td>
+            <form action="sp_order_function.php" method="POST">
+            <button onclick="return confirmDelete();" type="submit" name="delete_orders" value="<?php echo $orders['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+                Remove
+              </button>
+            </form>
+          </td>
         </tr>
         <?php
       }
@@ -248,7 +247,7 @@ if (isset($_POST['submit'])) {
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="order_controller.php">
+                    <a href="../admin_layout_order/order_controller.php">
                     <i class="fa fa-book" aria-hidden="true"></i>
                         <span class="nav-text">
                             Order Controller
@@ -309,6 +308,14 @@ if (isset($_POST['submit'])) {
                 </li>  
             </ul> -->
         </nav> 
+
+          <!-- Rest of the HTML code -->
+
+            <script>
+                function confirmDelete() {
+                    return confirm('Are you sure to delete this user?');
+                }
+            </script>
         
       
 

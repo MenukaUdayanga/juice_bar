@@ -3,14 +3,14 @@
 <?php 
 
 session_start();
-
+require_once "../login_database/dbc.php";
 ?>
 
 
 <html>
   <head>
 
-  <link rel="stylesheet" href="user_page.css">
+  <link rel="stylesheet" href="../user_layout/user_page.css">
   <style>
 
         *{
@@ -94,7 +94,35 @@ else{
 
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-   <h1>I can do that</h1>
+   <h1>I can do that so far</h1>
+
+   <?php 
+   
+    $query = "SELECT* FROM availablejuice;";
+
+    $query_run=mysqli_query($conn,$query);
+
+    if(mysqli_num_rows($query_run)>0){
+
+        while($row= mysqli_fetch_assoc($query_run)){
+
+          echo  '<h1>'.$row['row'].'</h1>';
+          echo  '<h1>'.$row['row1'].'</h1>';
+          echo  '<h1>'.$row['row2'].'</h1>';
+            
+        }
+    }
+
+    
+
+   
+   
+   
+   ?>
+
+ 
+
+
 
 </div>
 
@@ -132,10 +160,10 @@ else{
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="../user_avilable_juice/avilable_juice.php">
+                    <a href="avilable_juice.php">
                        <i class="fa fa-camera-retro fa-2x"></i>
                         <span class="nav-text">
-                            Available Juice
+                          Avilable Juice
                         </span>
                     </a>
                    
