@@ -85,7 +85,7 @@ session_start();
      
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-   <h1>I can do that</h1>
+   <h1>I can do that so far ban</h1>
 
 </div>
 
@@ -148,18 +148,18 @@ session_start();
                     </a>
                 </li>
                 <li>
-                   <a href="#">
+                   <a href="../admin_layout_gallery/admin_gallery_controller.php">
                        <i class="fa fa-cogs fa-2x"></i>
                         <span class="nav-text">
-                            Tools & Resources
+                            Gallery Controller
                         </span>
                     </a>
                 </li>
                 <li>
-                   <a href="#">
+                <a href="../admin_layout_gallery/admin_gallery_select.php">
                         <i class="fa fa-map-marker fa-2x"></i>
                         <span class="nav-text">
-                            Member Map
+                           Gellery 2
                         </span>
                     </a>
                 </li>
