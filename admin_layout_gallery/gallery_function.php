@@ -30,12 +30,12 @@ if (isset($_POST['dataSave'])) {
     if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
         $msg = "Image uploaded successfully";
         
-        header("location:../admin_layout_gallery/admin_gallery_controller.php?success");
+        header("location:../admin_layout_gallery/admin_gallery_select.php?success");
         exit();
 
     }else{
         $msg = "Failed to upload image";
-        header("location:../admin_layout_gallery/admin_gallery_controller.php?error=notSent");
+        header("location:../admin_layout_gallery/admin_gallery_select.php?error=notSent");
         exit();
     }
 }

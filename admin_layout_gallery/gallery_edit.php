@@ -3,6 +3,7 @@
 <?php 
 
 session_start();
+require_once "../login_database/dbc.php";
 
 ?>
 
@@ -11,7 +12,7 @@ session_start();
   <head>
 
   <link rel="stylesheet" href="../user_layout/user_page.css">
-  <link rel="stylesheet" href="gallery.css">
+  
   <style>
 
         *{
@@ -51,7 +52,38 @@ session_start();
         }
 
 
-        
+        /* Update Form */
+
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  button[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+   
+  }
 
        
 </style>
@@ -86,38 +118,70 @@ session_start();
     
 <div class="container" style="margin:20px;">
 
-
-
      
-<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
+<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px; margin-top:3%;">
 
-<a style="float:right; " href="admin_gallery_select.php"><i style="font-size: 40px;" class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
-
-
-<h3 class="main-topic">Data Adding Form</h3>
-
-<div>
-  <form action="gallery_function.php" method="POST" enctype="multipart/form-data">
+<a style="float:right; " href="../admin_layout_gallery/admin_gallery_select.php"><i style="font-size: 40px;" class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
     
-    <!-- <input type="hidden" name="id" > -->
 
-    <label for="lname">Juice Name</label>
-    <input type="text"  name="juiceName" placeholder="Enter Juice Name..." required>
+<?php
 
-    <label for="lname">Choose Image</label>
-    <input type="file"  name="image" required>
+if(isset($_GET['id'])){
 
-    <br>
-    <br>
+    $juice_id = mysqli_real_escape_string($conn,($_GET['id']));
+    $query = "SELECT*FROM availablejuice WHERE id='$juice_id';";
+    $query_run=mysqli_query($conn,$query);
 
-    <label for="lname">Description</label>
-    <input type="text"  name="text" placeholder="Enter anytext...">
+    if(mysqli_num_rows($query_run)>0){
+
+        $juices = mysqli_fetch_array($query_run);
+
+        
+
+         ?>
+
+
+       
+                <h1 style="padding:20px;">Juice Gallery Update</h1>
+
+            <div>
+            <form action="save_function.php" method="POST">
+                
+                <input type="hidden" value="<?= $juices['id'];?>" name="id">
+
+                <label for="lname">Juice Name</label>
+                <input type="text" value="<?= $juices['juiceName'];?>" name="juiceName" placeholder="Enter juice name..">
+            
+                <label for="lname">Image</label>
+                <input type="file" value="<?= $juices['image'];?>" name="image">
+
+                <br>
+                <br>
+                <label for="lname">Description</label>
+                <input type="text" value="<?= $juices['text'];?>" name="text" placeholder="Enter description..">
+            
+
+                <button type="submit" name="update">Update Item</button>
+            </form>
+            </div>
+
+<?php 
+
+}
+
+               else{
+
+                echo"<h4>No such Id Found</h4>";
+              
+            }
+
+            }
+
+?>
 
   
-   <button type="submit" name="dataSave">Save Data</button>
 
-  </form>
-</div>
+  
 
 </div>
 
@@ -137,7 +201,7 @@ session_start();
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="../admin_layout/select_users.php">
+                    <a href="select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -146,7 +210,7 @@ session_start();
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="../admin_layout/admin_controller_login.php">
+                    <a href="admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                             Admin Controller

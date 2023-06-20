@@ -228,10 +228,10 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
                 <li>
-                   <a href="#">
-                       <i class="fa fa-cogs fa-2x"></i>
+                <a href="../admin_layout_gallery/admin_gallery_select.php">
+                   <i class="fa fa-picture-o" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Tools & Resources
+                            Gallery Controller
                         </span>
                     </a>
                 </li>

@@ -144,10 +144,10 @@ else{
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="avilable_juice.php">
-                       <i class="fa fa-camera-retro fa-2x"></i>
+                <a href="avilable_juice.php">
+                    <i class="fa fa-picture-o" aria-hidden="true"></i>
                         <span class="nav-text">
-                          Avilable Juice
+                            Juice Gallery
                         </span>
                     </a>
                    

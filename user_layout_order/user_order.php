@@ -240,16 +240,16 @@ else{
                 <a href="../user_special_order/user_sp_order.php">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
                         <span class="nav-text">
-                           User Special Order
+                           Customer Special Order
                         </span>
                     </a>
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="#">
-                       <i class="fa fa-camera-retro fa-2x"></i>
+                    <a href="../user_avilable_juice/avilable_juice.php">
+                    <i class="fa fa-picture-o" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Survey Photos
+                            Juice Gallery
                         </span>
                     </a>
                    

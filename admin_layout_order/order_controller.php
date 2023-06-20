@@ -85,7 +85,7 @@ require_once "../login_database/dbc.php";
 
 <div class="container" style="margin: 20px;">
     <div class="layout" style="background-color: white; width: 90%; height: 100%; float: right; padding: 7px;">
-      <h1>User Controller Table</h1>
+      <h1>Order Controller Table</h1>
       <form action="" method="POST" style="margin:1%;">
         <input type="text" id="search" name="search" placeholder="Search Data...." style="width:20%; height:5%; color:blue; 
         font-size: 20px; border:2px solid blue; padding:15px; margin-right:3%; margin-right:1%; ">
@@ -274,10 +274,10 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
                 <li>
-                   <a href="#">
-                       <i class="fa fa-cogs fa-2x"></i>
+                <a href="../admin_layout_gallery/admin_gallery_select.php">
+                   <i class="fa fa-picture-o" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Tools & Resources
+                            Gallery Controller
                         </span>
                     </a>
                 </li>

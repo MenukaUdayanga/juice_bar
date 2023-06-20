@@ -192,7 +192,7 @@ if(isset($_GET['id'])){
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="select_users.php">
+                    <a href="../admin_layout/select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -201,7 +201,7 @@ if(isset($_GET['id'])){
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="admin_controller_login.php">
+                    <a href="../admin_layout/admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                             Admin Controller
@@ -227,26 +227,21 @@ if(isset($_GET['id'])){
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-book fa-2x"></i>
+                <a href="../admin_layout_sp_order_controller/sp_order_controller.php">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
                         <span class="nav-text">
-                           Surveying Jobs
+                           Special Order Controller
                         </span>
                     </a>
                 </li>
                 <li>
-                   <a href="#">
-                       <i class="fa fa-cogs fa-2x"></i>
-                        <span class="nav-text">
-                            Tools & Resources
-                        </span>
-                    </a>
+                   
                 </li>
                 <li>
-                   <a href="#">
-                        <i class="fa fa-map-marker fa-2x"></i>
+                <a href="../admin_layout_gallery/admin_gallery_select.php">
+                   <i class="fa fa-picture-o" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Member Map
+                            Gallery Controller
                         </span>
                     </a>
                 </li>

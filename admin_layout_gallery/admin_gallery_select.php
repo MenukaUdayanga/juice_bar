@@ -63,8 +63,22 @@ session_start();
          <!-- Show all form -->
 
         <button type="submit" name="click" style = "background-color:#73dae6; color:black; float:right; display:inline; 
-        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; border-radius: 10px;">Show All Data</button>
+        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; ">Show All Data</button>
+
+        
+
+        
+
+         
       </form>
+
+       <!-- Add Photos form -->
+
+      <a href="../admin_layout_gallery/admin_gallery_controller.php"> <button type="submit"  style = "background-color:#73dae6; color:black; float:right; 
+        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; margin-right:13%; position:relative; bottom:7%; ">Add Gallery</button></a>
+
+
+      
 
 
    
@@ -79,7 +93,8 @@ session_start();
           <th>Juice Name</th>
           <th>Image</th>
           <th>Description</th>
-          <th>Action</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
 
 
@@ -100,6 +115,14 @@ session_start();
           <td><?php echo $juice['juiceName']; ?></td>
           <td><?php echo $juice['image']; ?></td>
           <td><?php echo $juice['text']; ?></td>
+
+
+          <td>
+
+          <a href="gallery_edit.php?id=<?= $juice['id']; ?>"  style="  text-decoration: none; background-color:#32459c ; color: white; height: 30px; cursor: pointer; padding: 5px;" >Edit</a>
+          </td>
+
+          
           
           <td>
           <form action="gallery_delete.php" method="POST">
@@ -107,9 +130,9 @@ session_start();
           Remove
           </button>
           </form>
-
-          
           </td>
+
+        
         </tr>
         <?php
 
@@ -143,15 +166,25 @@ if (isset($_POST['submit'])) {
           <td><?php echo $juice['image']; ?></td>
           <td><?php echo $juice['text']; ?></td>
 
+
+          <td>
+
+          <a href="gallery_edit.php?id=<?= $juice['id']; ?>"  style="  text-decoration: none; background-color:#32459c ; color: white; height: 30px; cursor: pointer; padding: 5px;" >Edit</a>
+          </td>
+
+          
+
           <td>
           <form action="gallery_delete.php" method="POST">
           <button onclick="return confirmDelete();" type="submit" name="delete_picture" value="<?php echo $juice['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
           Remove
           </button>
-          </form>
+          </form> 
+          </td>
+
 
           
-          </td>
+
         </tr>
         <?php
       }
@@ -183,7 +216,7 @@ if (isset($_POST['submit'])) {
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="select_users.php">
+                    <a href="../admin_layout/select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -192,7 +225,7 @@ if (isset($_POST['submit'])) {
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="admin_controller_login.php">
+                    <a href="../admin_layout/admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                         Admin Controller
@@ -226,10 +259,10 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
                 <li>
-                   <a href="#">
-                       <i class="fa fa-cogs fa-2x"></i>
+                <a href="admin_gallery_select.php">
+                   <i class="fa fa-picture-o" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Tools & Resources
+                            Gallery Controller
                         </span>
                     </a>
                 </li>
