@@ -10,8 +10,9 @@ require_once "../login_database/dbc.php";
 <html>
   <head>
 
+  <link rel="stylesheet" href="../style/user_gallery.css">
   <link rel="stylesheet" href="../user_layout/user_page.css">
-  <link rel="stylesheet" href="available.css">
+  
   <style>
 
         *{
@@ -51,6 +52,7 @@ require_once "../login_database/dbc.php";
         }
 
        
+            
        
 </style>
  
@@ -93,15 +95,26 @@ else{
     
 <div class="container" style="margin: 20px;">
     <div class="layout" style="background-color: white; width: 90%; height: 100%; float: right; padding: 7px;">
-        <h1>I can do that so far</h1>
+        <h1 class="topic">Today Available Juice Items</h1>
+        
         
         <?php
      $result = mysqli_query($conn, "SELECT * FROM availablejuice");
     while ($row = mysqli_fetch_array($result)) {
-      echo "<div id='img_div'>";
-      	echo "<img src='../admin_layout_gallery/images/".$row['image']."' >";
-      	echo "<p>".$row['text']."</p>";
-      echo "</div>";
+   
+
+       
+        echo "<div id='img_div'>";
+        
+        echo "<img class='image' src='../admin_layout_gallery/images/".$row['image']."' >";
+        
+        echo "</div>";
+       
+
+        echo "<p class='j_name'>".$row['juiceName']."</p>";
+        echo "<p class='des'>".$row['text']."</p>";
+
+
     }
   ?>
     </div>

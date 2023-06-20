@@ -153,7 +153,7 @@ if(isset($_GET['id'])){
                 <input type="text" value="<?= $juices['juiceName'];?>" name="juiceName" placeholder="Enter juice name..">
             
                 <label for="lname">Image</label>
-                <input type="file" value="<?= $juices['image'];?>" name="image">
+                <input type="file" value="<?= $juices['image'];?>" name="image" required>
 
                 <br>
                 <br>
