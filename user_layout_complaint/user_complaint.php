@@ -11,7 +11,8 @@ session_start();
   <head>
 
   <link rel="stylesheet" href="../user_layout/user_page.css">
-  <link rel="stylesheet" href="gallery.css">
+
+  <link rel="stylesheet" href="../style/user_complaint.css">
   <style>
 
         *{
@@ -50,9 +51,7 @@ session_start();
         background-color: #04AA6D;
         }
 
-
-        
-
+       
        
 </style>
  
@@ -70,9 +69,18 @@ session_start();
  "> <h1 class="heading">The Fresh juice bar</h1></li>
   <ul>
 
- <li style="float:right"><a href="../login_formate/admin_login.php">logout</a></li>;
+  <?php 
+if(isset($_SESSION["userName"])){
 
- 
+    echo '<li style="float:right"><a href="../login_formate/user_login.php">logout</a></li>';
+    echo '<li style="float:right"><a href="#"> Wellcome &nbsp; User &nbsp;'.$_SESSION["userName"].' !</a></li>';
+    
+}
+else{
+    echo '<li style="float:right"><a href="../login_formate/user_login.php">login</a></li>';
+}
+
+?>
   
 </ul>
 
@@ -86,41 +94,59 @@ session_start();
     
 <div class="container" style="margin:20px;">
 
-
-
-     
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-<a style="float:right; " href="admin_gallery_select.php"><i style="font-size: 40px;" class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+   <div class="circle"></div>
+   <div class="circle1"></div>
+   <div class="circle2"></div>
+   <div class="circle3"></div>
+   <div class="circle4"></div>
+   
+
+   <div class="main">
+
+    <h1 class="c_topic">Customer Complaint Section</h1>
+
+    <form action="complaint_fun.php" method="post">
+
+    <label for="" class="lv">First Name</label>
+    <br>
+    <input class="box" type="text" name="fName" placeholder="First Name.." required>
+    <br>
 
 
-<h3 class="main-topic">Data Adding Form</h3>
+    <label for="" class="lv">Last Name</label>
+    <br>
+    <input class="box" type="text" name="lName" placeholder="Last Name.." required>
+    <br>
 
-<div>
-  <form action="gallery_function.php" method="POST" enctype="multipart/form-data">
-    
-    <!-- <input type="hidden" name="id" > -->
 
-    <label for="lname">Juice Name</label>
-    <input type="text"  name="juiceName" placeholder="Enter Juice Name..." required>
+    <label for="" class="lv">Email Address</label>
+    <br>
+    <input class="box" type="email" name="email" placeholder="exaple@gamail.com" required>
+    <br>
 
-    <label for="lname">Juice Price</label>
-    <input type="text"  name="price" placeholder="Enter Juice Price..." required>
 
-    <label for="lname">Choose Image</label>
-    <input type="file"  name="image" required>
+    <label for="" class="lv">Phone Number</label>
+    <br>
+    <input  class="box" type="text" name="number" placeholder="066-0000000" required>
+    <br>
+
+
+    <label for="" class="lv">Complaint</label>
+    <br>
+    <textarea class="area" name="c_complaint" id=""  placeholder="I have a complaint" required></textarea>
+
 
     <br>
     <br>
+    <button type="submit" class="bt" name="c_file">File Complaint</button>
 
-    <label for="lname">Description</label>
-    <input type="text"  name="text" placeholder="Enter anytext...">
+    </form>
 
-  
-   <button type="submit" name="dataSave">Save Data</button>
 
-  </form>
-</div>
+
+   </div>
 
 </div>
 
@@ -140,61 +166,61 @@ session_start();
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="../admin_layout/select_users.php">
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="nav-text">
-                            User Controller
-                        </span>
-                    </a>
-                    
-                </li>
-                <li class="has-subnav">
-                    <a href="../admin_layout/admin_controller_login.php">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                        <span class="nav-text">
-                            Admin Controller
-                        </span>
-                    </a>
-                    
-                </li>
-                <li class="has-subnav">
-                    <a href="../admin_layout_order/order_controller.php">
+                    <a href="../user_layout_order/user_order.php">
                     <i class="fa fa-book" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Order Controller
+                            Customer Order
+                        </span>
+                    </a>
+                    
+                </li>
+                <li class="has-subnav">
+                    <a href="../user_special_order/user_sp_order.php">
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="nav-text">
+                           User Special Order
+                        </span>
+                    </a>
+                    
+                </li>
+                <li class="has-subnav">
+                <a href="../user_avilable_juice/avilable_juice.php">
+                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Juice Gallery
                         </span>
                     </a>
                    
                 </li>
                 <li>
-                <a href="../admin_layout_edit/edit_inter.php">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        <span class="nav-text">
-                            Juice Item Controller
-                        </span>
-                    </a>
-                </li>
-                <li>
-                <a href="../admin_layout_sp_order_controller/sp_order_controller.php">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="nav-text">
-                           Special Order Controller
-                        </span>
-                    </a>
-                </li>
-                <li>
-                <a href="../admin_layout_gallery/admin_gallery_select.php">
-                   <i class="fa fa-picture-o" aria-hidden="true"></i>
-                        <span class="nav-text">
-                            Gallery Controller
-                        </span>
-                    </a>
-                </li>
-                <li>
-                <a href="../admin_layout_complaint/user_complaint_con.php">
-                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                    <a href="../user_layout_complaint/user_complaint.php">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         <span class="nav-text">
                             Customer Complaint
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-book fa-2x"></i>
+                        <span class="nav-text">
+                           Surveying Jobs
+                        </span>
+                    </a>
+                </li>
+                <li>
+                   <a href="#">
+                       <i class="fa fa-cogs fa-2x"></i>
+                        <span class="nav-text">
+                            Tools & Resources
+                        </span>
+                    </a>
+                </li>
+                <li>
+                   <a href="#">
+                        <i class="fa fa-map-marker fa-2x"></i>
+                        <span class="nav-text">
+                            Member Map
                         </span>
                     </a>
                 </li>

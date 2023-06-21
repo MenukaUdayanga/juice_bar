@@ -156,10 +156,10 @@ session_start();
                     </a>
                 </li>
                 <li>
-                <a href="">
-                        <i class="fa fa-map-marker fa-2x"></i>
+                <a href="../admin_layout_complaint/user_complaint_con.php">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         <span class="nav-text">
-                           Gellery 2
+                            Customer Complaint
                         </span>
                     </a>
                 </li>

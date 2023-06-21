@@ -245,11 +245,11 @@ if(isset($_GET['id'])){
                         </span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                       <i class="fa fa-info fa-2x"></i>
+                <li>        
+             <a href="../admin_layout_complaint/user_complaint_con.php">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Documentation
+                            Customer Complaint
                         </span>
                     </a>
                 </li>

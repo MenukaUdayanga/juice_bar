@@ -54,14 +54,7 @@ session_start();
 
   <div class="container" style="margin: 20px;">
     <div class="layout" style="background-color: white; width: 90%; height: 100%; float: right; padding: 7px;">
-      
-     <a style="float:right; " href="../admin_layout/admin_controller_login.php"><i style="font-size: 40px;" class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
-    
-    <h1>Admin Controller Table</h1>
-
-    
-
-
+      <h1>Customer Complaint Controller</h1>
       <form action="" method="POST" style="margin:1%;">
         <input type="text" id="search" name="search" placeholder="Search Data...." style="width:20%; height:5%; color:blue; 
         font-size: 20px; border:2px solid blue; padding:15px; margin-right:3%; margin-right:1%; ">
@@ -70,37 +63,24 @@ session_start();
          <!-- Show all form -->
 
         <button type="submit" name="click" style = "background-color:#73dae6; color:black; float:right; display:inline; 
-        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; ">Show All Data</button>
-      
-
-     
-   
-    
-    </form>
-
-
-      <!-- Add admin form -->
-
-      <a href="../admin_layout/save_admin.php">
-      <button type="submit" name="add" style="background-color:#73dae6; color:black; float:right; display:inline; width:10%; height:30px; font-weight:bold; border:3px solid red; cursor:pointer;  margin-right:2%;
-      position:relative; bottom:7%; right:12%;">
-      Add New Admin
-      </button>
-      </a>
-   
-    
-    
-   
+        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; border-radius: 10px;">Show All Data</button>
+      </form>
 
 
    
 
+      <form action="" method=POST style="";>
+       
+      </form>
 
       <table id="customers">
         <tr>
-          <th>Admin Id</th>
-          <th>AdminName</th>
-          <th>Password</th>
+          <th>Complaint Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Complaint</th>
           <th>Action</th>
         </tr>
 
@@ -109,21 +89,25 @@ session_start();
 
   if(isset($_POST['click'])){
 
-     $query = "SELECT*FROM admin;";
+     $query = "SELECT*FROM complaint;";
 
      $query_run = mysqli_query($conn, $query);
 
      if(mysqli_num_rows($query_run)>0){
-      while($admin=mysqli_fetch_assoc($query_run)){
+      while($complaint=mysqli_fetch_assoc($query_run)){
         ?>
 
 <tr>
-          <td><?php echo $admin['id']; ?></td>
-          <td><?php echo $admin['adminName']; ?></td>
-          <td><?php echo $admin['password']; ?></td>
+          <td><?php echo $complaint['id']; ?></td>
+          <td><?php echo $complaint['firstName']; ?></td>
+          <td><?php echo $complaint['lastName']; ?></td>
+          <td><?php echo $complaint['email']; ?></td>
+          <td><?php echo $complaint['number']; ?></td>
+          <td><?php echo $complaint['c_complaint']; ?></td>
+          
           <td>
-            <form action="subadmin_delete.php" method="POST">
-            <button onclick="return confirmDelete();" type="submit" name="delete_admins" value="<?php echo  $admin['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+            <form action="complaint_fun.php" method="POST">
+            <button onclick="return confirmDelete();" type="submit" name="delete_complaint" value="<?php echo $complaint['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
                 Remove
               </button>
             </form>
@@ -148,24 +132,27 @@ if (isset($_POST['submit'])) {
   $search = $_POST['search'];
 
   if (!empty($search)) {
-    $query = "SELECT * FROM admin WHERE id LIKE '%$search%' OR adminName LIKE '%$search%' OR password LIKE '%$search%';";
+    $query = "SELECT * FROM complaint WHERE firstName LIKE '%$search%' OR lastName LIKE '%$search%' OR email LIKE '%$search%'
+    OR number LIKE '%$search%' OR c_complaint LIKE '%$search%';";
     $query_run = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
-      while ($admin = mysqli_fetch_assoc($query_run)) {
+      while ($complaint= mysqli_fetch_assoc($query_run)) {
         ?>
         <tr>
-          <td><?php echo $admin['id']; ?></td>
-          <td><?php echo $admin['adminName']; ?></td>
-          <td><?php echo $admin['password']; ?></td>
-          <td>
-          <form action="subadmin_delete.php" method="POST">
-          <button onclick="return confirmDelete();" type="submit" name="delete_admins" value="<?php echo $admin['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
-          Remove
-          </button>
-          </form>
+          <td><?php echo $complaint['id']; ?></td>
+          <td><?php echo $complaint['firstName']; ?></td>
+          <td><?php echo $complaint['lastName']; ?></td>
+          <td><?php echo $complaint['email']; ?></td>
+          <td><?php echo $complaint['number']; ?></td>
+          <td><?php echo $complaint['c_complaint']; ?></td>
 
-          
+          <td>
+            <form action="complaint_fun.php" method="POST">
+            <button onclick="return confirmDelete();" type="submit" name="delete_complaint" value="<?php echo $complaint['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+                Remove
+              </button>
+            </form>
           </td>
         </tr>
         <?php
@@ -179,7 +166,6 @@ if (isset($_POST['submit'])) {
   }
 }
 ?>
-
 
 
 
@@ -199,7 +185,7 @@ if (isset($_POST['submit'])) {
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="select_users.php">
+                    <a href="../admin_layout/select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -208,7 +194,7 @@ if (isset($_POST['submit'])) {
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="admin_controller_login.php">
+                    <a href="../admin_layout/admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                         Admin Controller
@@ -217,7 +203,7 @@ if (isset($_POST['submit'])) {
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="../admin_layout_order/order_controller.php">
+                <a href="../admin_layout_order/order_controller.php">
                     <i class="fa fa-book" aria-hidden="true"></i>
                         <span class="nav-text">
                             Order Controller
@@ -250,7 +236,7 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
                 <li>
-                <a href="../admin_layout_complaint/user_complaint_con.php">
+                <a href="user_complaint_con.php">
                 <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         <span class="nav-text">
                             Customer Complaint
@@ -283,7 +269,7 @@ if (isset($_POST['submit'])) {
 
 <script>
     function confirmDelete() {
-        return confirm('Are you sure to delete this Admin?');
+        return confirm('Are you sure to delete this user?');
     }
 </script>
 
