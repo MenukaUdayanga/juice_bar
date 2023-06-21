@@ -8,11 +8,12 @@ if(isset($_POST['update'])){
 
     $id= $_POST['id'];
     $juiceName= $_POST['juiceName'];
+    $price= $_POST['price'];
     $image= $_POST['image'];
     $text= $_POST['text'];
     
 
-    $query = "UPDATE availablejuice SET juiceName='$juiceName',image='$image',text='$text' WHERE id='$id';";
+    $query = "UPDATE availablejuice SET juiceName='$juiceName',price='$price',image='$image',text='$text' WHERE id='$id';";
 
     $query_run=mysqli_query($conn,$query);
 

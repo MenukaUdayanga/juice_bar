@@ -104,6 +104,9 @@ session_start();
     <label for="lname">Juice Name</label>
     <input type="text"  name="juiceName" placeholder="Enter Juice Name..." required>
 
+    <label for="lname">Juice Price</label>
+    <input type="text"  name="price" placeholder="Enter Juice Price..." required>
+
     <label for="lname">Choose Image</label>
     <input type="file"  name="image" required>
 

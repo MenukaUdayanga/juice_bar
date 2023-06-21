@@ -91,6 +91,7 @@ session_start();
         <tr>
           <th>Juice Id</th>
           <th>Juice Name</th>
+          <th>Juice Price</th>
           <th>Image</th>
           <th>Description</th>
           <th>Edit</th>
@@ -113,6 +114,7 @@ session_start();
 <tr>
           <td><?php echo $juice['id']; ?></td>
           <td><?php echo $juice['juiceName']; ?></td>
+          <td><?php echo $juice['price']; ?></td>
           <td><?php echo $juice['image']; ?></td>
           <td><?php echo $juice['text']; ?></td>
 
@@ -153,7 +155,7 @@ if (isset($_POST['submit'])) {
   $search = $_POST['search'];
 
   if (!empty($search)) {
-    $query = "SELECT * FROM availablejuice WHERE juiceName LIKE '%$search%' OR image LIKE '%$search%' OR text LIKE '%$search%';";
+    $query = "SELECT * FROM availablejuice WHERE juiceName LIKE '%$search%'OR price LIKE '%$search%' OR image LIKE '%$search%' OR text LIKE '%$search%';";
     $query_run = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
@@ -163,6 +165,7 @@ if (isset($_POST['submit'])) {
         <td>
             <?php echo $juice['id']; ?></td>
           <td><?php echo $juice['juiceName']; ?></td>
+          <td><?php echo $juice['price']; ?></td>
           <td><?php echo $juice['image']; ?></td>
           <td><?php echo $juice['text']; ?></td>
 

@@ -13,6 +13,12 @@ if (isset($_POST['dataSave'])) {
 
     // Get juice name
     $juice_name = mysqli_real_escape_string($conn, $_POST['juiceName']);
+   
+   
+   // Get juice price
+    $juice_price = mysqli_real_escape_string($conn, $_POST['price']);
+
+
 
     // Get image name
     $image = $_FILES['image']['name'];
@@ -23,7 +29,7 @@ if (isset($_POST['dataSave'])) {
     // image file directory
     $target = "images/".basename($image);
 
-    $sql = "INSERT INTO availablejuice (juiceName,image,text) VALUES ('$juice_name', '$image','$image_text')";
+    $sql = "INSERT INTO availablejuice (juiceName,price,image,text) VALUES ('$juice_name','$juice_price', '$image','$image_text')";
     // execute query
     mysqli_query($conn, $sql);
 

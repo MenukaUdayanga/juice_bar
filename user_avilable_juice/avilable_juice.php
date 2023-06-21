@@ -50,7 +50,9 @@ require_once "../login_database/dbc.php";
         .active {
         background-color: #04AA6D;
         }
-
+        
+        
+ 
        
             
        
@@ -102,15 +104,15 @@ else{
      $result = mysqli_query($conn, "SELECT * FROM availablejuice");
     while ($row = mysqli_fetch_array($result)) {
    
-
        
-        echo "<div id='img_div'>";
-        
+        echo "<p class='pr'>".$row['price']."</p>";
+
+        echo "<a href='../user_layout_order/user_order.php'><div id='img_div'>";
         echo "<img class='image' src='../admin_layout_gallery/images/".$row['image']."' >";
+        echo "</div></a>";
         
-        echo "</div>";
        
-
+      
         echo "<p class='j_name'>".$row['juiceName']."</p>";
         echo "<p class='des'>".$row['text']."</p>";
 
