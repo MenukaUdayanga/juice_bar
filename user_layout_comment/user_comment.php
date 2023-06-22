@@ -3,6 +3,7 @@
 <?php 
 
 session_start();
+require_once "../login_database/dbc.php";
 
 ?>
 
@@ -10,9 +11,9 @@ session_start();
 <html>
   <head>
 
+  <link rel="stylesheet" href="../style/comment.css">
   <link rel="stylesheet" href="../user_layout/user_page.css">
 
-  <link rel="stylesheet" href="../style/user_complaint.css">
   <style>
 
         *{
@@ -96,57 +97,74 @@ else{
 
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-   <div class="circle"></div>
-   <div class="circle1"></div>
-   <div class="circle2"></div>
-   <div class="circle3"></div>
-   <div class="circle4"></div>
    
 
-   <div class="main">
+   <div class="com">
 
-    <h1 class="c_topic">Customer Complaint Section</h1>
+   <h1 class="c_topic">Type Anycomment Regrading Service</h1>
 
-    <form action="complaint_fun.php" method="post">
+   <form action="comment_fun.php" method="post">
 
-    <label for="" class="lv">First Name</label>
-    <br>
-    <input class="box" type="text" name="fName" placeholder="First Name.." required>
-    <br>
+   <label class="ll" for="">Email Address</label><br>
+   <input class="filed" type="email" name="email" placeholder="example@gmail.com" required>
+   <br>
+   
+   <label class="ll" for="">Comment</label><br>
+   <input class="filed" type="text" name="message" placeholder="Comment"  required>
+   <br>
 
+   <label class="ll" for="">Date</label> <br>
+   <input class="filed" type="date" name="date" placeholder="2023/05/08" required >
+   <br>
 
-    <label for="" class="lv">Last Name</label>
-    <br>
-    <input class="box" type="text" name="lName" placeholder="Last Name.." required>
-    <br>
+   <button class="btn" type="submit" name="save">Comment</button>
 
+   </form>
 
-    <label for="" class="lv">Email Address</label>
-    <br>
-    <input class="box" type="email" name="email" placeholder="exaple@gamail.com" required>
-    <br>
-
-
-    <label for="" class="lv">Phone Number</label>
-    <br>
-    <input  class="box" type="text" name="number" placeholder="066-0000000" required>
-    <br>
+   </div>
 
 
-    <label for="" class="lv">Complaint</label>
-    <br>
-    <textarea class="area" name="c_complaint" id=""  placeholder="I have a complaint" required></textarea>
+   <!-- Select Customer Cooment -->
+
+   
 
 
-    <br>
-    <br>
-    <button type="submit" class="bt" name="c_file">File Complaint</button>
+   <div class="main_squire">
 
-    </form>
+   <h1 class="r_topic">Customer Comment Regarding our Products</h1>
 
+     <?php 
+     
+     $query = "SELECT*FROM comment";
+
+     $query_run = mysqli_query($conn,$query);
+
+     while($com = mysqli_fetch_array($query_run) ){
+
+        echo "<div class='squire'>";
+
+        echo "<p class='mail'><i style ='font-size:35px; display:inline; color:red;padding-right: 1%;' class='fa fa-user' aria-hidden='true'></i> " . $com['email'] . "</p>";
+
+        echo "<p class='c_date'>". $com['date'] . "</p>";
+
+        echo "<p class='f_com'>". $com['c_comment'] . "</p>";
+
+        echo "</div>";
+
+     }
+
+     
+
+     
+     
+     ?>
 
 
    </div>
+
+
+
+
 
 </div>
 
@@ -201,7 +219,7 @@ else{
                     </a>
                 </li>
                 <li>
-                <a href="../user_layout_comment/user_comment.php">
+                <a href="user_comment.php">
                     <i class="fa fa-comment-o" aria-hidden="true"></i>
                         <span class="nav-text">
                            Customer Comment
@@ -226,7 +244,7 @@ else{
                 </li>
                 <li>
                     <a href="#">
-                       <i class="fa fa-info fa-2x"></i>
+                    <i class="fa fa-user" aria-hidden="true"></i>
                         <span class="nav-text">
                             Documentation
                         </span>

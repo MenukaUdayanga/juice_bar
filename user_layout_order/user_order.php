@@ -263,10 +263,10 @@ else{
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-book fa-2x"></i>
+                <a href="../user_layout_comment/user_comment.php">
+                    <i class="fa fa-comment-o" aria-hidden="true"></i>
                         <span class="nav-text">
-                           Surveying Jobs
+                           Customer Comment
                         </span>
                     </a>
                 </li>
