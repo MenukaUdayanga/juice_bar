@@ -270,6 +270,15 @@ window.onclick = function(event) {
                         </span>
                     </a>
                 </li>
+
+                <li>
+                <a href="../admin_layout_comment/comment_controller.php">
+                    <i class="fa fa-comment-o" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Customer Comment
+                        </span>
+                    </a>
+                 </li>
             </ul>
 
             <!-- <ul class="logout">

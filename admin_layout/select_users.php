@@ -244,10 +244,10 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                       <i class="fa fa-info fa-2x"></i>
+                <a href="../admin_layout_comment/comment_controller.php">
+                    <i class="fa fa-comment-o" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Documentation
+                            Customer Comment
                         </span>
                     </a>
                 </li>

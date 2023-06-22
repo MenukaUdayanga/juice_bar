@@ -1,3 +1,4 @@
+
 <?php 
 require_once "../login_database/dbc.php";
 session_start();
@@ -54,7 +55,7 @@ session_start();
 
   <div class="container" style="margin: 20px;">
     <div class="layout" style="background-color: white; width: 90%; height: 100%; float: right; padding: 7px;">
-      <h1>Customer Gallery Controller</h1>
+      <h1>Customer Comment Controller</h1>
       <form action="" method="POST" style="margin:1%;">
         <input type="text" id="search" name="search" placeholder="Search Data...." style="width:20%; height:5%; color:blue; 
         font-size: 20px; border:2px solid blue; padding:15px; margin-right:3%; margin-right:1%; ">
@@ -63,22 +64,8 @@ session_start();
          <!-- Show all form -->
 
         <button type="submit" name="click" style = "background-color:#73dae6; color:black; float:right; display:inline; 
-        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; ">Show All Data</button>
-
-        
-
-        
-
-         
+        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; border-radius: 10px;">Show All Data</button>
       </form>
-
-       <!-- Add Photos form -->
-
-      <a href="../admin_layout_gallery/admin_gallery_controller.php"> <button type="submit"  style = "background-color:#73dae6; color:black; float:right; 
-        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; margin-right:13%; position:relative; bottom:7%; ">Add Gallery</button></a>
-
-
-      
 
 
    
@@ -89,13 +76,11 @@ session_start();
 
       <table id="customers">
         <tr>
-          <th>Juice Id</th>
-          <th>Juice Name</th>
-          <th>Juice Price</th>
-          <th>Image</th>
-          <th>Description</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th>Comment Id</th>
+          <th>Email</th>
+          <th>Comment</th>
+          <th>Date</th>
+          <th>Action</th>
         </tr>
 
 
@@ -103,38 +88,28 @@ session_start();
 
   if(isset($_POST['click'])){
 
-     $query = "SELECT*FROM availablejuice;";
+     $query = "SELECT*FROM comment;";
 
      $query_run = mysqli_query($conn, $query);
 
      if(mysqli_num_rows($query_run)>0){
-      while($juice=mysqli_fetch_assoc($query_run)){
+      while($comment=mysqli_fetch_assoc($query_run)){
         ?>
 
 <tr>
-          <td><?php echo $juice['id']; ?></td>
-          <td><?php echo $juice['juiceName']; ?></td>
-          <td><?php echo $juice['price']; ?></td>
-          <td><?php echo $juice['image']; ?></td>
-          <td><?php echo $juice['text']; ?></td>
-
-
-          <td>
-
-          <a href="gallery_edit.php?id=<?= $juice['id']; ?>"  style="  text-decoration: none; background-color:#32459c ; color: white; height: 30px; cursor: pointer; padding: 5px;" >Edit</a>
-          </td>
-
+          <td><?php echo $comment['id']; ?></td>
+          <td><?php echo $comment['email']; ?></td>
+          <td><?php echo $comment['c_comment']; ?></td>
+          <td><?php echo $comment['date']; ?></td>
           
           
           <td>
-          <form action="gallery_delete.php" method="POST">
-          <button onclick="return confirmDelete();" type="submit" name="delete_picture" value="<?php echo $juice['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
-          Remove
-          </button>
-          </form>
+            <form action="comment_fun.php" method="POST">
+            <button onclick="return confirmDelete();" type="submit" name="delete_comment" value="<?php echo $comment['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+                Remove
+              </button>
+            </form>
           </td>
-
-        
         </tr>
         <?php
 
@@ -155,39 +130,26 @@ if (isset($_POST['submit'])) {
   $search = $_POST['search'];
 
   if (!empty($search)) {
-    $query = "SELECT * FROM availablejuice WHERE juiceName LIKE '%$search%'OR price LIKE '%$search%' OR image LIKE '%$search%' OR text LIKE '%$search%';";
+    $query = "SELECT * FROM comment WHERE email LIKE '%$search%' OR c_comment LIKE '%$search%' OR date LIKE '%$search%';";
     $query_run = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
-      while ($juice = mysqli_fetch_assoc($query_run)) {
+      while ($comment = mysqli_fetch_assoc($query_run)) {
         ?>
         <tr>
-        <td>
-            <?php echo $juice['id']; ?></td>
-          <td><?php echo $juice['juiceName']; ?></td>
-          <td><?php echo $juice['price']; ?></td>
-          <td><?php echo $juice['image']; ?></td>
-          <td><?php echo $juice['text']; ?></td>
-
-
-          <td>
-
-          <a href="gallery_edit.php?id=<?= $juice['id']; ?>"  style="  text-decoration: none; background-color:#32459c ; color: white; height: 30px; cursor: pointer; padding: 5px;" >Edit</a>
-          </td>
-
           
-
-          <td>
-          <form action="gallery_delete.php" method="POST">
-          <button onclick="return confirmDelete();" type="submit" name="delete_picture" value="<?php echo $juice['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
-          Remove
-          </button>
-          </form> 
-          </td>
-
-
+          <td><?php echo $comment['id']; ?></td>
+          <td><?php echo $comment['email']; ?></td>
+          <td><?php echo $comment['c_comment']; ?></td>
+          <td><?php echo $comment['date']; ?></td>
           
-
+          <td>
+            <form action="comment_fun.php" method="POST">
+            <button onclick="return confirmDelete();" type="submit" name="delete_comment" value="<?php echo $comment['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+                Remove
+              </button>
+            </form>
+          </td>
         </tr>
         <?php
       }
@@ -262,7 +224,7 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
                 <li>
-                <a href="admin_gallery_select.php">
+                <a href="../admin_layout_gallery/admin_gallery_select.php">
                    <i class="fa fa-picture-o" aria-hidden="true"></i>
                         <span class="nav-text">
                             Gallery Controller
@@ -278,7 +240,7 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
                 <li>
-                <a href="../admin_layout_comment/comment_controller.php">
+                <a href="comment_controller.php">
                     <i class="fa fa-comment-o" aria-hidden="true"></i>
                         <span class="nav-text">
                             Customer Comment
