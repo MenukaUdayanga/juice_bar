@@ -90,10 +90,20 @@ require_once "../login_database/dbc.php";
 
         .fileds{
             width:18%;
-            margin-right:2%;
+            margin-right:0;
             height:35px;
         }
 
+        .area{
+
+            width:100%;
+            margin-right:2%;
+            height:60px;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            background-color: white;
+            
+        }
        
        
 </style>
@@ -159,7 +169,7 @@ else{
     <input type="text"  name="email" placeholder="Your email .." required>
      
     <label for="address">Home Address </label>
-    <textarea rows="4" cols="123"  name="address" >
+    <textarea class="area"  name="address" >
     </textarea>
 
     <br>
@@ -167,7 +177,7 @@ else{
 
 
     <label for="address">Type About Special Order</label>
-    <textarea rows="8" cols="123"  name="spOrder" >
+    <textarea class="area"  name="spOrder" >
     </textarea>
      
      
@@ -256,10 +266,10 @@ else{
                     </a>
                 </li>
                 <li>
-                   <a href="#">
-                       <i class="fa fa-cogs fa-2x"></i>
+                <a href="../user_layout_contact/user_contact.php">
+                   <i class="fa fa-phone-square" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Tools & Resources
+                            Contact Us
                         </span>
                     </a>
                 </li>

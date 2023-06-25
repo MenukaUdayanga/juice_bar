@@ -11,6 +11,7 @@ session_start();
   <head>
 
   <link rel="stylesheet" href="user_page.css">
+  
   <style>
 
         *{
@@ -157,10 +158,10 @@ else{
                     </a>
                 </li>
                 <li>
-                   <a href="#">
-                       <i class="fa fa-cogs fa-2x"></i>
+                   <a href="../user_layout_contact/user_contact.php">
+                   <i class="fa fa-phone-square" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Tools & Resources
+                            Contact Us
                         </span>
                     </a>
                 </li>
