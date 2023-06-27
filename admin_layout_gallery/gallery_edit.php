@@ -270,6 +270,14 @@ if(isset($_GET['id'])){
                         </span>
                     </a>
                 </li>
+                <li>
+                    <a href="../admin_layout_contact/contact.php">
+                    <i class="fa fa-phone-square" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Contact Us
+                        </span>
+                    </a>
+                </li>
             </ul>
 
             <!-- <ul class="logout">
