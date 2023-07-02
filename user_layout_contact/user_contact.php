@@ -251,10 +251,10 @@ else{
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                       <i class="fa fa-info fa-2x"></i>
+                <a href="../user_layout_map/map.php">
+                    <i class="fa fa-map-marker fa-2x"></i>
                         <span class="nav-text">
-                            Documentation
+                           Location
                         </span>
                     </a>
                 </li>

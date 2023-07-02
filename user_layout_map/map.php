@@ -11,7 +11,6 @@ session_start();
   <head>
 
   <link rel="stylesheet" href="../user_layout/user_page.css">
-  <link rel="stylesheet" href="../style/about.css">
   
   <style>
 
@@ -94,52 +93,10 @@ else{
     
 <div class="container" style="margin:20px;">
 
-<div class="layout" style="  width: 90%; height:100%; float:right; padding:7px;">
-<h1 class="p_topic">About Our Juice bar</h1>
-<img class="im" src="picture/about.jpg" alt="" srcset="">
+<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-   <div class="a_manin">
-
-
-   <div class="box">
-    <h3 class="a_topic">Our Shop</h3>
-    <p class="a_des">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, quia. 
-        Enim dolore dignissimos debitis, accusamus velit nulla natus sunt beatae ullam. Asperiores
-         dignissimos expedita pariatur<span  id="dot">...</span> <span class="h_text" id="more">Saepe perferendis, nostrum quae officiis tenetur molestias 
-         maiores inventore? Cum ullam in officiis nesciunt 
-        non quam deleniti. Maxime nemo dicta velit est delectus quasi similique!</span></p>
-        <button type="submit" class="a_btn" onclick="read()" id="btn_text" >Read more</button>
-   </div>
-   <div  class="box">
-    
-   <h3 class="a_topic">Product & Services</h3>
-
-  
-
-   <p class="a_des">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, quia. 
-        Enim dolore dignissimos debitis, accusamus velit nulla natus sunt beatae ullam. Asperiores
-         dignissimos expedita pariatur<span  id="dot1">...</span> <span class="h_text" id="more1">Saepe perferendis, nostrum quae officiis tenetur molestias 
-         maiores inventore? Cum ullam in officiis nesciunt 
-        non quam deleniti. Maxime nemo dicta velit est delectus quasi similique!</span></p>
-
-        <button type="submit" class="a_btn" onclick="read1()" id="btn_text1" >Read more</button>
-
-        
-        
-   </div>
-   
-   <div  class="box">
-   <h3 class="a_topic">Ownership</h3>
-   <p class="a_des">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, quia. 
-        Enim dolore dignissimos debitis, accusamus velit nulla natus sunt beatae ullam. Asperiores
-         dignissimos expedita pariatur<span  id="dot2">...</span> <span class="h_text" id="more2">Saepe perferendis, nostrum quae officiis tenetur molestias 
-         maiores inventore? Cum ullam in officiis nesciunt 
-        non quam deleniti. Maxime nemo dicta velit est delectus quasi similique!</span></p>
-
-        <button type="submit" class="a_btn" onclick="read2()" id="btn_text2" >Read more</button>
-   </div>
-
-   </div>
+   <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.4437086520725!2d80.49909267419638!3d8.357936399133857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afc8bb50e4a5211%3A0x8982eeef6ad20ad9!2sFruit%20Juice%20bar!5e0!3m2!1sen!2slk!4v1688198383303!5m2!1sen!2slk" 
+    width="100%" height="450px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
 
 </div>
 
@@ -210,7 +167,7 @@ else{
                     </a>
                 </li>
                 <li>
-                   <a href="about_us.php">
+                   <a href="../user_layout_about/about_us.php">
                    <i class="fa fa-info fa-2x"></i>             
                         <span class="nav-text">
                            About Us
@@ -218,12 +175,13 @@ else{
                     </a>
                 </li>
                 <li>
-                <a href="../user_layout_map/map.php">
+                <a href="map.php">
                     <i class="fa fa-map-marker fa-2x"></i>
                         <span class="nav-text">
                            Location
                         </span>
                     </a>
+                   
                 </li>
             </ul>
 
@@ -239,7 +197,7 @@ else{
             </ul> -->
         </nav> 
         
-      <script src="../style/about.js"></script>
+      
 
   </body>
 
