@@ -1,8 +1,10 @@
 
 
+
 <?php 
 
 session_start();
+require_once "../login_database/dbc.php";
 
 ?>
 
@@ -11,6 +13,7 @@ session_start();
   <head>
 
   <link rel="stylesheet" href="../user_layout/user_page.css">
+  <link rel="stylesheet" href="../style/save_supplier.css">
   <style>
 
         *{
@@ -85,7 +88,54 @@ session_start();
      
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-   <h1>I can do that so far ban</h1>
+<a style="float:right; " href="../admin_layout_supplier/supplier.php"><i style="font-size: 40px;" class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+
+   <h3 class="m_topic">Suppiler Data Save Form</h3>
+
+<div>
+  <form action="save_code.php" method="POST">
+
+    
+    <input type="hidden" name="s_id">
+
+    <label for="lname">Date</label>
+    <input class="su_date" type="date"  name="date">
+
+    <label for="fname">Company/Supplier Name</label>
+    <input type="text" name="name" placeholder="ABC Company/Jayasighe" required>
+
+    <label for="fname">Phone Number</label>
+    <input type="text" name="phone" placeholder="066-7785432" required>
+
+    <label for="fname">Address</label>
+    <input type="text" name="address" placeholder="No.55-Anukumbura,Kandy" required>
+
+    <label for="fname">Email</label>
+    <input type="text" name="email" placeholder="example@gmail.com" required>
+
+    <label for="fname">Amount</label>
+    <input type="text" name="value" placeholder="120,453">
+
+    <label for="fname">Receivable</label>
+    <input type="text" name="receivable" placeholder="12,000">
+
+    <label for="fname">Receivable Date</label>
+    <input class="su_date" type="date" name="receivable_date">
+
+    <label for="fname">Payable</label>
+    <input type="text" name="payable" placeholder="10,000">
+
+    <label for="fname">Payable Date</label>
+    <input class="su_date" type="date" name="payable_date">
+
+    <label for="fname">Desctiption</label>
+    <input type="text" name="des" placeholder="dessciption">
+
+
+    <button type="submit" name="data_save">Save Data</button>
+
+  </form>
+</div>
 
 </div>
 

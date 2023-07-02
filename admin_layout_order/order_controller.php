@@ -324,7 +324,7 @@ if (isset($_POST['submit'])) {
 
          <script>
                 function confirmDelete() {
-                    return confirm('Are you sure to delete this user?');
+                    return confirm('Are you sure to delete this order?');
                 }
             </script>
         

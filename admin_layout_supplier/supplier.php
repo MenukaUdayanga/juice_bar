@@ -5,8 +5,9 @@ session_start();
 
 <html>
 <head>
-  <link rel="stylesheet" href="../style/admin_table.css">
+  <link rel="stylesheet" href="../style/supplier.css">
   <link rel="stylesheet" href="../user_layout/user_page.css">
+  
   <style>
     * {
       margin: 0;
@@ -54,7 +55,7 @@ session_start();
 
   <div class="container" style="margin: 20px;">
     <div class="layout" style="background-color: white; width: 90%; height: 100%; float: right; padding: 7px;">
-      <h1>Contact Controller Table</h1>
+      <h1>Supplier Controller Section</h1>
       <form action="" method="POST" style="margin:1%;">
         <input type="text" id="search" name="search" placeholder="Search Data...." style="width:20%; height:5%; color:blue; 
         font-size: 20px; border:2px solid blue; padding:15px; margin-right:3%; margin-right:1%; ">
@@ -63,7 +64,13 @@ session_start();
          <!-- Show all form -->
 
         <button type="submit" name="click" style = "background-color:#73dae6; color:black; float:right; display:inline; 
-        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; border-radius: 10px;">Show All Data</button>
+        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer;">Show All Data</button>
+      </form>
+
+       <!-- Save Suppliers -->
+
+      <form action="supplier_save.php" method="post">
+      <button class="b_save" type="submit" name="sup_data">Add Data</button>
       </form>
 
 
@@ -75,9 +82,18 @@ session_start();
 
       <table id="customers">
         <tr>
-          <th>Contact Id</th>
+          <th>Supplier Id</th>
+          <th>Date</th>
+          <th>Company Name</th>
+          <th>Phone Number</th>
+          <th>Address</th>
           <th>Email</th>
-          <th>Message</th>
+          <th>Value</th>
+          <th>Receivable</th>
+          <th>Receivable Date</th>
+          <th>Payable</th>
+          <th>Payable Date</th>
+          <th>Description</th>
           <th>Action</th>
         </tr>
 
@@ -86,21 +102,31 @@ session_start();
 
   if(isset($_POST['click'])){
 
-     $query = "SELECT*FROM contact;";
+     $query = "SELECT*FROM supplier;";
 
      $query_run = mysqli_query($conn, $query);
 
      if(mysqli_num_rows($query_run)>0){
-      while($contact=mysqli_fetch_assoc($query_run)){
+      while($suppliers=mysqli_fetch_assoc($query_run)){
         ?>
 
 <tr>
-          <td><?php echo $contact['id']; ?></td>
-          <td><?php echo $contact['email']; ?></td>
-          <td><?php echo $contact['message']; ?></td>  
+          <td><?php echo $suppliers['id']; ?></td>
+          <td><?php echo $suppliers['date']; ?></td>
+          <td><?php echo $suppliers['name']; ?></td>
+          <td><?php echo $suppliers['phone']; ?></td>
+          <td><?php echo $suppliers['address']; ?></td>
+          <td><?php echo $suppliers['email']; ?></td>
+          <td><?php echo $suppliers['value']; ?></td>
+          <td><?php echo $suppliers['receivable']; ?></td>
+          <td><?php echo $suppliers['receivable_date']; ?></td>
+          <td><?php echo $suppliers['payable']; ?></td>
+          <td><?php echo $suppliers['payable_date']; ?></td>
+          <td><?php echo $suppliers['desciption']; ?></td>
+          
           <td>
-            <form action="contact_code.php" method="POST">
-            <button onclick="return confirmDelete();" type="submit" name="delete_contact" value="<?php echo $contact['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+            <form action="supplier_delete.php" method="POST">
+            <button onclick="return confirmDelete();" type="submit" name="delete_supplier" value="<?php echo $suppliers['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
                 Remove
               </button>
             </form>
@@ -109,7 +135,7 @@ session_start();
         <?php
 
       }
-     }else{echo "NOt found data";}
+     }else{ echo "<h2 class='sup_a'>Not Found Data </h2>"; }
 
   }
 
@@ -125,24 +151,38 @@ if (isset($_POST['submit'])) {
   $search = $_POST['search'];
 
   if (!empty($search)) {
-    $query = "SELECT * FROM contact WHERE email LIKE '%$search%' OR message LIKE '%$search%';";
+    $query = "SELECT * FROM supplier WHERE date LIKE '%$search%' OR name LIKE '%$search%' OR phone LIKE '%$search%' OR address LIKE '%$search%'
+    OR email LIKE '%$search%'  OR value LIKE '%$search%'  OR receivable LIKE '%$search%'  OR receivable_date LIKE '%$search%'  OR payable LIKE '%$search%'
+    OR payable_date LIKE '%$search%'  OR desciption LIKE '%$search%';";
     $query_run = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
-      while ($contact = mysqli_fetch_assoc($query_run)) {
+      while ($suppliers = mysqli_fetch_assoc($query_run)) {
         ?>
         <tr>
 
-          <td><?php echo $contact['id']; ?></td>
-          <td><?php echo $contact['email']; ?></td>
-          <td><?php echo $contact['message']; ?></td>  
+        
+          <td><?php echo $suppliers['id']; ?></td>
+          <td><?php echo $suppliers['date']; ?></td>
+          <td><?php echo $suppliers['name']; ?></td>
+          <td><?php echo $suppliers['phone']; ?></td>
+          <td><?php echo $suppliers['address']; ?></td>
+          <td><?php echo $suppliers['email']; ?></td>
+          <td><?php echo $suppliers['value']; ?></td>
+          <td><?php echo $suppliers['receivable']; ?></td>
+          <td><?php echo $suppliers['receivable_date']; ?></td>
+          <td><?php echo $suppliers['payable']; ?></td>
+          <td><?php echo $suppliers['payable_date']; ?></td>
+          <td><?php echo $suppliers['desciption']; ?></td>
 
           <td>
-            <form action="contact_code.php" method="POST">
-            <button onclick="return confirmDelete();" type="submit" name="delete_contact" value="<?php echo $contact['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+          <form action="supplier_delete.php" method="POST">
+            <button onclick="return confirmDelete();" type="submit" name="delete_supplier" value="<?php echo $suppliers['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
                 Remove
               </button>
             </form>
+
+          
           </td>
         </tr>
         <?php
@@ -175,7 +215,7 @@ if (isset($_POST['submit'])) {
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="../admin_layout/select_users.php">
+                    <a href="select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -184,7 +224,7 @@ if (isset($_POST['submit'])) {
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="../admin_layout/admin_controller_login.php">
+                    <a href="admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                         Admin Controller
@@ -241,8 +281,9 @@ if (isset($_POST['submit'])) {
                         </span>
                     </a>
                 </li>
+
                 <li>
-                    <a href="contact.php">
+                    <a href="../admin_layout_contact/contact.php">
                     <i class="fa fa-phone-square" aria-hidden="true"></i>
                         <span class="nav-text">
                             Contact Us
@@ -267,7 +308,7 @@ if (isset($_POST['submit'])) {
 
 <script>
     function confirmDelete() {
-        return confirm('Are you sure to delete this user contact?');
+        return confirm('Are you sure to delete this data?');
     }
 </script>
 
