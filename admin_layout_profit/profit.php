@@ -10,7 +10,10 @@ session_start();
 <html>
   <head>
 
+  
   <link rel="stylesheet" href="../user_layout/user_page.css">
+  <link rel="stylesheet" href="../style/profit.css">
+  
   <style>
 
         *{
@@ -85,8 +88,47 @@ session_start();
      
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-   <h1>I can do that so far ban</h1>
+   <h1 class="t_profit">Profit Calulation And Save</h1>
 
+
+  
+   <form action="profit_fun.php" method="post">
+
+   <label for="" class="head">Select Date</label><br>
+   <input class="t_field" type="date" name="date" id="">
+   <br>
+
+   <label for="" class="head">Today Income</label><br>
+   <input class="t_field" type="text" id="income" name="income"  placeholder="Enter Income.." required>
+   <br>
+
+   <label for="" class="head">Today Expentiture</label><br>
+   <input class="t_field" type="text" id="expence" name="expence"  placeholder="Enter Expence.." required>
+   <br>
+   
+   <label for="" class="head">Today Profit</label><br>
+   <div class="a_field" id="answer" type="text"></div>
+   <br>
+
+   <label for="" class="head">Re-enter Above Profit</label><br>
+   <input class="t_field" type="text"  name="profit"  placeholder="Enter Expence.." required>
+   <br>
+
+   
+   
+   <button class="b_btn" type="submit" name="p_data">Save</button>
+  
+
+   </form>
+
+   
+   <br>
+   <button class="c_btn" type="submit" name="cal" onclick="profi()">Calculate</button>
+   <br>
+   
+   
+
+  
 </div>
 
 
@@ -189,15 +231,6 @@ session_start();
                         </span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="../admin_layout_profit/profit.php">
-                    <i class="fa fa-truck" aria-hidden="true"></i>
-                        <span class="nav-text">
-                            Profit Handling
-                        </span>
-                    </a>
-                </li>
                 
             </ul>
 
@@ -216,6 +249,8 @@ session_start();
         </nav> 
         
       
+
+    <script src="../style/profit.js"></script>
 
   </body>
 
