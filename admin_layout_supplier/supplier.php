@@ -20,6 +20,8 @@ session_start();
       padding: 0;
       overflow: hidden;
       background-color: #333;
+      width: 100%;
+      
     }
 
     li {
@@ -28,7 +30,7 @@ session_start();
 
     li a {
       display: block;
-      color: white;
+      color: #111;
       text-align: center;
       padding: 22px 22px;
       text-decoration: none;
@@ -44,12 +46,14 @@ session_start();
   </style>
 </head>
 <body>
-  <div style="position: sticky; top: 0; display: inline;">
+  <div style="position: sticky; top: 0; display: inline; ">
     <h1 class="heading" style="position: absolute; top: 0; left: 40%; color: white; padding-top: 10px;">The Fresh Juice Bar</h1>
     <ul>
-      <li style="float: right"><a href="../login_formate/admin_login.php">Logout</a></li>
+        <li style="float: right; opacity:-1;"><a href="../login_formate/admin_login.php">Logout</a></li>
     </ul>
-  </div>
+</div>
+
+
 
   <!-- Search bar form -->
 
@@ -64,7 +68,7 @@ session_start();
          <!-- Show all form -->
 
         <button type="submit" name="click" style = "background-color:#73dae6; color:black; float:right; display:inline; 
-        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer;">Show All Data</button>
+        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; ">Show All Data</button>
       </form>
 
        <!-- Save Suppliers -->
@@ -72,6 +76,11 @@ session_start();
       <form action="supplier_save.php" method="post">
       <button class="b_save" type="submit" name="sup_data">Add Data</button>
       </form>
+
+
+      <div>
+      <a class="edit" href="../login_formate/admin_login.php">Logout</a>
+      </div>
 
 
    
@@ -93,8 +102,9 @@ session_start();
           <th>Receivable Date</th>
           <th>Payable</th>
           <th>Payable Date</th>
-          <th>Description</th>
-          <th>Action</th>
+          <th>Supplied Items</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
 
 
@@ -123,6 +133,13 @@ session_start();
           <td><?php echo $suppliers['payable']; ?></td>
           <td><?php echo $suppliers['payable_date']; ?></td>
           <td><?php echo $suppliers['desciption']; ?></td>
+
+          <td>
+          <form action="update_sup_code.php" method="GET">
+            <input type="hidden" name="id" value="<?= $suppliers['id']; ?>">
+            <button class="s_edit" type="submit" name="s_update" value="Edit">Edit</button>
+          </form>
+         </td>
           
           <td>
             <form action="supplier_delete.php" method="POST">
@@ -131,6 +148,10 @@ session_start();
               </button>
             </form>
           </td>
+
+          
+
+
         </tr>
         <?php
 
@@ -176,6 +197,13 @@ if (isset($_POST['submit'])) {
           <td><?php echo $suppliers['desciption']; ?></td>
 
           <td>
+          <form action="update_sup_code.php" method="GET">
+            
+            <button class="s_edit" type="submit" value="<?php echo $suppliers['id']; ?>" name="s_update" value="Edit">Edit</button>
+          </form>
+         </td>
+
+          <td>
           <form action="supplier_delete.php" method="POST">
             <button onclick="return confirmDelete();" type="submit" name="delete_supplier" value="<?php echo $suppliers['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
                 Remove
@@ -184,6 +212,9 @@ if (isset($_POST['submit'])) {
 
           
           </td>
+
+        
+
         </tr>
         <?php
       }
@@ -215,7 +246,7 @@ if (isset($_POST['submit'])) {
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="select_users.php">
+                    <a href="../admin_layout/select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -224,7 +255,7 @@ if (isset($_POST['submit'])) {
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="admin_controller_login.php">
+                    <a href="../admin_layout/admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                         Admin Controller
@@ -287,6 +318,14 @@ if (isset($_POST['submit'])) {
                     <i class="fa fa-phone-square" aria-hidden="true"></i>
                         <span class="nav-text">
                             Contact Us
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="supplier.php">
+                    <i class="fa fa-truck" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Supplier Controller
                         </span>
                     </a>
                 </li>

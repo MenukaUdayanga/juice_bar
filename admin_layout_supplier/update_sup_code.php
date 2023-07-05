@@ -1,5 +1,6 @@
 
 
+
 <?php 
 
 session_start();
@@ -12,7 +13,7 @@ require_once "../login_database/dbc.php";
   <head>
 
   <link rel="stylesheet" href="../user_layout/user_page.css">
-  
+  <link rel="stylesheet" href="../style/save_supplier.css">
   <style>
 
         *{
@@ -51,40 +52,6 @@ require_once "../login_database/dbc.php";
         background-color: #04AA6D;
         }
 
-
-        /* Update Form */
-
-  input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  button[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button[type=submit]:hover {
-    background-color: #45a049;
-  }
-  
-  div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-   
-  }
-
        
 </style>
  
@@ -98,8 +65,7 @@ require_once "../login_database/dbc.php";
 
   
 
-    <li style="position: absolute; top:0; left:40%; color:white;   list-style-type: none; padding-top: 10px;
- "> <h1 class="heading">The Fresh juice bar</h1></li>
+    <li style="position: absolute; top:0; left:40%; color:white;   list-style-type: none; padding-top: 10px;"> <h1 class="heading">The Fresh juice bar</h1></li>
   <ul>
 
  <li style="float:right"><a href="../login_formate/admin_login.php">logout</a></li>;
@@ -119,72 +85,81 @@ require_once "../login_database/dbc.php";
 <div class="container" style="margin:20px;">
 
      
-<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px; margin-top:3%;">
+<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-<a style="float:right; " href="../admin_layout_gallery/admin_gallery_select.php"><i style="font-size: 40px;" class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+<a style="float:right;  z-index: -5; " href="../admin_layout_supplier/supplier.php"><i style="font-size: 40px;" class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+
+   <h3 class="m_topic">Suppiler Data Update Form</h3>
+
+<div>
+
+   <?php 
+   
+ if(isset($_GET['id'])){
+
+    $supplierId = $_GET['id'];
+
+   $query = "SELECT*FROM supplier WHERE id='$supplierId';";
+
+   $query_run = mysqli_query($conn,$query);
+
+   if(mysqli_num_rows( $query_run)>0){
+   
+    $suppliers=mysqli_fetch_array($query_run);
+   
+   ?>
+
+  <form action="update_code.php" method="POST">
+
     
+    <input type="hidden" value="<?= $suppliers['id'];?>" name="s_id">
 
-<?php
+    <label for="lname">Date</label>
+    <input class="su_date" type="date"  name="date" value="<?= $suppliers['date'];?>">
 
-if(isset($_GET['id'])){
+    <label for="fname">Company/Supplier Name</label>
+    <input type="text" name="name" placeholder="ABC Company/Jayasighe" value="<?= $suppliers['name'];?>" required>
 
-    $juice_id = mysqli_real_escape_string($conn,($_GET['id']));
-    $query = "SELECT*FROM availablejuice WHERE id='$juice_id';";
-    $query_run=mysqli_query($conn,$query);
+    <label for="fname">Phone Number</label>
+    <input type="text" name="phone" placeholder="066-7785432" value="<?= $suppliers['phone'];?>" required>
 
-    if(mysqli_num_rows($query_run)>0){
+    <label for="fname">Address</label>
+    <input type="text" name="address" placeholder="No.55-Anukumbura,Kandy" value="<?= $suppliers['address'];?>" required>
 
-        $juices = mysqli_fetch_array($query_run);
+    <label for="fname">Email</label>
+    <input type="text" name="email" placeholder="example@gmail.com" value="<?= $suppliers['email'];?>" required>
 
-        
+    <label for="fname">Amount</label>
+    <input type="text" name="price" placeholder="120,453" value="<?= $suppliers['value'];?>">
 
-         ?>
+    <label for="fname">Receivable</label>
+    <input type="text" name="receivable" placeholder="12,000" value="<?= $suppliers['receivable'];?>">
+
+    <label for="fname">Receivable Date</label>
+    <input class="su_date" type="date" name="receivable_date" value="<?= $suppliers['receivable_date'];?>">
+
+    <label for="fname">Payable</label>
+    <input type="text" name="payable" placeholder="10,000" value="<?= $suppliers['payable'];?>">
+
+    <label for="fname">Payable Date</label>
+    <input class="su_date" type="date" name="payable_date" value="<?= $suppliers['payable_date'];?>">
+
+    <label for="fname">Desctiption</label>
+    <input type="text" name="des" placeholder="dessciption" value="<?= $suppliers['desciption'];?>">
 
 
-       
-                <h1 style="padding:20px;">Juice Gallery Update</h1>
+    <button type="submit" name="data_update">Update Data</button>
 
-            <div>
-            <form action="save_function.php" method="POST">
-                
-                <input type="hidden" value="<?= $juices['id'];?>" name="id">
+  </form>
 
-                <label for="lname">Juice Name</label>
-                <input type="text" value="<?= $juices['juiceName'];?>" name="juiceName" placeholder="Enter juice name..">
-
-                <label for="lname">Juice Price</label>
-                <input type="text" value="<?= $juices['price'];?>" name="price" placeholder="Enter juice price.." required>
-            
-                <label for="lname">Image</label>
-                <input type="file" value="<?= $juices['image'];?>" name="image" required>
-
-                <br>
-                <br>
-                <label for="lname">Description</label>
-                <input type="text" value="<?= $juices['text'];?>" name="text" placeholder="Enter description..">
-            
-
-                <button type="submit" name="update">Update Item</button>
-            </form>
-            </div>
-
-<?php 
-
+  <?php 
+  
+   }
+  
 }
-
-               else{
-
-                echo"<h4>No such Id Found</h4>";
-              
-            }
-
-            }
-
-?>
-
   
-
-  
+  ?>
+</div>
 
 </div>
 
@@ -204,7 +179,7 @@ if(isset($_GET['id'])){
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="select_users.php">
+                    <a href="../admin_layout/select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -213,7 +188,7 @@ if(isset($_GET['id'])){
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="admin_controller_login.php">
+                    <a href=" ../admin_layout/admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                             Admin Controller
@@ -247,7 +222,7 @@ if(isset($_GET['id'])){
                     </a>
                 </li>
                 <li>
-                <a href="../admin_layout_gallery/admin_gallery_select.php">
+                   <a href="../admin_layout_gallery/admin_gallery_select.php">
                    <i class="fa fa-picture-o" aria-hidden="true"></i>
                         <span class="nav-text">
                             Gallery Controller
@@ -263,13 +238,14 @@ if(isset($_GET['id'])){
                     </a>
                 </li>
                 <li>
-                <a href="../admin_layout_comment/comment_controller.php">
+                    <a href="../admin_layout_comment/comment_controller.php">
                     <i class="fa fa-comment-o" aria-hidden="true"></i>
                         <span class="nav-text">
                             Customer Comment
                         </span>
                     </a>
                 </li>
+
                 <li>
                     <a href="../admin_layout_contact/contact.php">
                     <i class="fa fa-phone-square" aria-hidden="true"></i>
@@ -278,8 +254,9 @@ if(isset($_GET['id'])){
                         </span>
                     </a>
                 </li>
+
                 <li>
-                    <a href="../admin_layout_supplier/supplier.php">
+                    <a href="supplier.php">
                     <i class="fa fa-truck" aria-hidden="true"></i>
                         <span class="nav-text">
                             Supplier Controller
@@ -287,6 +264,8 @@ if(isset($_GET['id'])){
                     </a>
                 </li>
             </ul>
+
+
 
             <!-- <ul class="logout">
                 <li>

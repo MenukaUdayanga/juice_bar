@@ -51,7 +51,7 @@ display:table;
 border-collapse:collapse;
 border-spacing:0;
 color:#999;
- font-family: arial;
+font-family: arial;
 font-size: 14px;
 text-decoration:none;
 -webkit-transition:all .1s linear;
@@ -74,7 +74,7 @@ position:relative;
 display:table-cell;
 vertical-align:middle;
 width:190px;
-  font-family: 'Titillium Web', sans-serif;
+font-family: 'Titillium Web', sans-serif;
 }
 
 .main-menu>ul.logout {

@@ -183,12 +183,13 @@ session_start();
 
                 <li>
                     <a href="../admin_layout_supplier/supplier.php">
-                    <i class="fa fa-phone-square" aria-hidden="true"></i>
+                    <i class="fa fa-truck" aria-hidden="true"></i>
                         <span class="nav-text">
                             Supplier Controller
                         </span>
                     </a>
                 </li>
+                
             </ul>
 
 

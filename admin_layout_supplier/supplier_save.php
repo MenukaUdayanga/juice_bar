@@ -155,7 +155,7 @@ require_once "../login_database/dbc.php";
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="select_users.php">
+                    <a href="../admin_layout/select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -164,7 +164,7 @@ require_once "../login_database/dbc.php";
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="admin_controller_login.php">
+                    <a href= "../admin_layout/admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                             Admin Controller
@@ -232,8 +232,8 @@ require_once "../login_database/dbc.php";
                 </li>
 
                 <li>
-                    <a href="../admin_layout_supplier/supplier.php">
-                    <i class="fa fa-phone-square" aria-hidden="true"></i>
+                    <a href="supplier.php">
+                    <i class="fa fa-truck" aria-hidden="true"></i>
                         <span class="nav-text">
                             Supplier Controller
                         </span>

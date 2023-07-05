@@ -24,12 +24,12 @@ if(isset($_POST['data_save'])){
 
     if($query_run){
 
-        header("location:../admin_layout_supplier/supplier_save.php?savedSuccess");
+        header("location:../admin_layout_supplier/supplier.php?savedSuccess");
         exit();
     }
     else{
 
-        header("location:../admin_layout_supplier/supplier_save.php?notSent");
+        header("location:../admin_layout_supplier/supplier.php?notSent");
         exit(); 
     }
 }

@@ -214,6 +214,14 @@ session_start();
                         </span>
                     </a>
                 </li>
+                <li>
+                    <a href="../admin_layout_supplier/supplier.php">
+                    <i class="fa fa-truck" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Supplier Controller
+                        </span>
+                    </a>
+                </li>
             </ul>
 
             <!-- <ul class="logout">

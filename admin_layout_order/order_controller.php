@@ -67,7 +67,7 @@ require_once "../login_database/dbc.php";
  "> <h1 class="heading">The Fresh juice bar</h1></li>
   <ul>
 
- <li style="float:right"><a href="../login_formate/admin_login.php">logout</a></li>;
+ <li style="float:right"><a href="../login_formate/admin_login.php">Logout</a></li>;
 
  
   
@@ -303,6 +303,14 @@ if (isset($_POST['submit'])) {
                     <i class="fa fa-phone-square" aria-hidden="true"></i>
                         <span class="nav-text">
                             Contact Us
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin_layout_supplier/supplier.php">
+                    <i class="fa fa-truck" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Supplier Controller
                         </span>
                     </a>
                 </li>
