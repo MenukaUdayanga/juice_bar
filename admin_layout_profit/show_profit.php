@@ -43,6 +43,7 @@ session_start();
   </style>
 </head>
 <body>
+    
   <div style="position: sticky; top: 0; display: inline;">
     <h1 class="heading" style="position: absolute; top: 0; left: 40%; color: white; padding-top: 10px;">The Fresh Juice Bar</h1>
     <ul>
@@ -54,7 +55,7 @@ session_start();
 
   <div class="container" style="margin: 20px;">
     <div class="layout" style="background-color: white; width: 90%; height: 100%; float: right; padding: 7px;">
-      <h1>User Controller Table</h1>
+      <h1>Profit Controller Section</h1>
       <form action="" method="POST" style="margin:1%;">
         <input type="text" id="search" name="search" placeholder="Search Data...." style="width:20%; height:5%; color:blue; 
         font-size: 20px; border:2px solid blue; padding:15px; margin-right:3%; margin-right:1%; ">
@@ -63,8 +64,22 @@ session_start();
          <!-- Show all form -->
 
         <button type="submit" name="click" style = "background-color:#73dae6; color:black; float:right; display:inline; 
-        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; border-radius: 10px;">Show All Data</button>
+        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; ">Show All Data</button>
+
+        
+
+        
+
+         
       </form>
+
+       <!-- Add Photos form -->
+
+      <a href="../admin_layout_profit/profit.php"> <button type="submit"  style = "background-color:#73dae6; color:black; float:right; 
+        width:10%; height:30px; font-weight: bold; border:3px solid red; cursor:pointer; margin-right:13%; position:relative; bottom:7%; ">Add Data</button></a>
+
+
+      
 
 
    
@@ -75,13 +90,13 @@ session_start();
 
       <table id="customers">
         <tr>
-          <th>Users Id</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>User Name</th>
-          <th>Password</th>
-          <th>Action</th>
+          <th>Profit Id</th>
+          <th>Date</th>
+          <th>Income</th>
+          <th>Expence</th>
+          <th>Profit</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
 
 
@@ -89,28 +104,39 @@ session_start();
 
   if(isset($_POST['click'])){
 
-     $query = "SELECT*FROM users;";
+     $query = "SELECT*FROM profitcal;";
 
      $query_run = mysqli_query($conn, $query);
 
      if(mysqli_num_rows($query_run)>0){
-      while($users=mysqli_fetch_assoc($query_run)){
+      while($profit=mysqli_fetch_assoc($query_run)){
         ?>
 
 <tr>
-          <td><?php echo $users['id']; ?></td>
-          <td><?php echo $users['firstName']; ?></td>
-          <td><?php echo $users['lastName']; ?></td>
-          <td><?php echo $users['email']; ?></td>
-          <td><?php echo $users['userName']; ?></td>
-          <td><?php echo $users['password']; ?></td>
+          <td><?php echo $profit['id']; ?></td>
+          <td><?php echo $profit['date']; ?></td>
+          <td><?php echo $profit['income']; ?></td>
+          <td><?php echo $profit['expence']; ?></td>
+          <td><?php echo $profit['profit']; ?></td>
+         
+
+
           <td>
-            <form action="select_user_code.php" method="POST">
-            <button onclick="return confirmDelete();" type="submit" name="delete_users" value="<?php echo $users['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
-                Remove
-              </button>
-            </form>
+
+          <a href="profit_update.php?id=<?= $profit['id']; ?>"  style="  text-decoration: none; background-color:#32459c ; color: white; height: 30px; cursor: pointer; padding: 5px;" >Edit</a>
           </td>
+
+          
+          
+          <td>
+          <form action="update_fun.php" method="POST">
+          <button onclick="return confirmDelete();" type="submit" name="delete_profit" value="<?php echo $profit['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+          Remove
+          </button>
+          </form> 
+          </td>
+
+        
         </tr>
         <?php
 
@@ -131,29 +157,38 @@ if (isset($_POST['submit'])) {
   $search = $_POST['search'];
 
   if (!empty($search)) {
-    $query = "SELECT * FROM users WHERE firstName LIKE '%$search%' OR lastName LIKE '%$search%' OR email LIKE '%$search%'
-    OR userName LIKE '%$search%';";
+    $query = "SELECT * FROM profitcal WHERE date LIKE '%$search%'OR income LIKE '%$search%' OR expence LIKE '%$search%' OR profit LIKE '%$search%';";
     $query_run = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
-      while ($users = mysqli_fetch_assoc($query_run)) {
+      while ($profit = mysqli_fetch_assoc($query_run)) {
         ?>
         <tr>
-          <td><?php echo $users['id']; ?></td>
-          <td><?php echo $users['firstName']; ?></td>
-          <td><?php echo $users['lastName']; ?></td>
-          <td><?php echo $users['email']; ?></td>
-          <td><?php echo $users['userName']; ?></td>
-          <td><?php echo $users['password']; ?></td>
+       
+          <td><?php echo $profit['id']; ?></td>
+          <td><?php echo $profit['date']; ?></td>
+          <td><?php echo $profit['income']; ?></td>
+          <td><?php echo $profit['expence']; ?></td>
+          <td><?php echo $profit['profit']; ?></td>
+
+
           <td>
-          <form action="select_user_code.php" method="POST">
-          <button onclick="return confirmDelete();" type="submit" name="delete_users" value="<?php echo $users['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
+
+          <a href="profit_update.php?id=<?= $profit['id']; ?>"  style="  text-decoration: none; background-color:#32459c ; color: white; height: 30px; cursor: pointer; padding: 5px;" >Edit</a>
+          </td>
+          
+
+          <td>
+          <form action="update_fun.php" method="POST">
+          <button onclick="return confirmDelete();" type="submit" name="delete_profit" value="<?php echo $profit['id']; ?>" style="background-color: red; color: white; height: 30px; cursor: pointer; padding: 2px;">
           Remove
           </button>
-          </form>
+          </form> 
+          </td>
+
 
           
-          </td>
+
         </tr>
         <?php
       }
@@ -185,7 +220,7 @@ if (isset($_POST['submit'])) {
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="select_users.php">
+                    <a href="../admin_layout/select_users.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             User Controller
@@ -194,7 +229,7 @@ if (isset($_POST['submit'])) {
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="admin_controller_login.php">
+                    <a href="../admin_layout/admin_controller_login.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="nav-text">
                         Admin Controller
@@ -251,7 +286,6 @@ if (isset($_POST['submit'])) {
                         </span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../admin_layout_contact/contact.php">
                     <i class="fa fa-phone-square" aria-hidden="true"></i>
@@ -270,7 +304,7 @@ if (isset($_POST['submit'])) {
                 </li>
 
                 <li>
-                    <a href="../admin_layout_profit/show_profit.php">
+                    <a href="show_profit.php">
                     <i class="fa fa-money" aria-hidden="true"></i>
                         <span class="nav-text">
                             Profit Handling
@@ -295,7 +329,7 @@ if (isset($_POST['submit'])) {
 
 <script>
     function confirmDelete() {
-        return confirm('Are you sure to delete this user?');
+        return confirm('Are you sure to delete this gallery?');
     }
 </script>
 

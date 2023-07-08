@@ -1,8 +1,10 @@
 
 
+
 <?php 
 
 session_start();
+require_once "../login_database/dbc.php";
 
 ?>
 
@@ -90,35 +92,52 @@ session_start();
 
 <a style="float:right; " href="../admin_layout_profit/show_profit.php"><i style="font-size: 40px;" class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
 
-   <h1 class="t_profit">Profit Calulation And Save</h1>
+   <h1 class="t_profit">Profit Calulation And Update</h1>
 
 
+   <?php
+
+if(isset($_GET['id'])){
+
+    $profit_id = mysqli_real_escape_string($conn,($_GET['id']));
+    $query = "SELECT*FROM profitcal WHERE id=' $profit_id ';";
+    $query_run=mysqli_query($conn,$query);
+
+    if(mysqli_num_rows($query_run)>0){
+
+        $profit = mysqli_fetch_array($query_run);
+
+        
+
+         ?>
   
-   <form action="profit_fun.php" method="post">
+   <form action="update_fun.php" method="post">
+
+   <input type="hidden" value="<?= $profit['id'];?>" name="id">
 
    <label for="" class="head">Select Date</label><br>
-   <input class="t_field" type="date" name="date" id="">
+   <input class="t_field" value="<?= $profit['date'];?>" type="date" name="date" id="">
    <br>
 
    <label for="" class="head">Today Income</label><br>
-   <input class="t_field" type="text" id="income" name="income"  placeholder="Enter Income.." required>
+   <input class="t_field" value="<?= $profit['income'];?>" type="text" id="income" name="income"  placeholder="Enter Income.." required>
    <br>
 
    <label for="" class="head">Today Expentiture</label><br>
-   <input class="t_field" type="text" id="expence" name="expence"  placeholder="Enter Expence.." required>
+   <input class="t_field" value="<?= $profit['expence'];?>" type="text" id="expence" name="expence"  placeholder="Enter Expence.." required>
    <br>
    
    <label for="" class="head">Today Profit</label><br>
-   <div class="a_field" id="answer" type="text"></div>
+   <div class="a_field" value="<?= $profit['expence'];?>" id="answer"  type="text"></div>
    <br>
 
    <label for="" class="head">Re-enter Above Profit</label><br>
-   <input class="t_field" type="text"  name="profit"  placeholder="Enter Profit.." required>
+   <input class="t_field" value="<?= $profit['profit'];?>" type="text"  name="profit"  placeholder="Enter Profit.." required>
    <br>
 
    
    
-   <button class="b_btn" type="submit" name="p_data">Save</button>
+   <button class="b_btn" type="submit" name="p_update">Update</button>
   
 
    </form>
@@ -129,6 +148,19 @@ session_start();
    <br>
    
    
+   <?php 
+
+}
+
+               else{
+
+                echo"<h4>No such Id Found</h4>";
+              
+            }
+
+            }
+
+?>
 
   
 </div>
