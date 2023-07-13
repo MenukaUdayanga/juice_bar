@@ -1,21 +1,10 @@
 
 
+
 <?php 
-require_once "../login_database/dbc.php";
+
 session_start();
-
-$dataPoints1 = array();
-$dataPoints2 = array();
-$dataPoints3 = array();
-
-$query = "SELECT * FROM profitchart";
-$query_run = mysqli_query($conn, $query);
-
-while ($row = mysqli_fetch_array($query_run)) {
-    $dataPoints1[] = array("label" => $row["year"], "y" => $row["income"]);
-    $dataPoints2[] = array("label" => $row["year"], "y" => $row["expense"]);
-    $dataPoints3[] = array("label" => $row["year"], "y" => $row["profit"]);
-}
+require_once "../login_database/dbc.php";
 
 ?>
 
@@ -23,62 +12,10 @@ while ($row = mysqli_fetch_array($query_run)) {
 <html>
   <head>
 
-  <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
-    <script>
-        window.onload = function() {
-            var chart = new CanvasJS.Chart("chartContainer", {
-                animationEnabled: true,
-                theme: "light2",
-                title: {
-                    text: "The Summery Of Finance For Years"
-                },
-                axisY: {
-                    includeZero: true
-                },
-                legend: {
-                    cursor: "pointer",
-                    verticalAlign: "center",
-                    horizontalAlign: "right",
-                    itemclick: toggleDataSeries
-                },
-                data: [{
-                    type: "column",
-                    name: "Income",
-                    indexLabel: "{y}",
-                    yValueFormatString: "LKR#0.##",
-                    showInLegend: true,
-                    dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
-                }, {
-                    type: "column",
-                    name: "Expense",
-                    indexLabel: "{y}",
-                    yValueFormatString: "LKR#0.##",
-                    showInLegend: true,
-                    dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
-                }, {
-                    type: "column",
-                    name: "profit",
-                    indexLabel: "{y}",
-                    yValueFormatString: "LKR#0.##",
-                    showInLegend: true,
-                    dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
-                }]
-            });
-
-            chart.render();
-
-            function toggleDataSeries(e) {
-                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                    e.dataSeries.visible = false;
-                } else {
-                    e.dataSeries.visible = true;
-                }
-                chart.render();
-            }
-        }
-    </script>
-
+  
   <link rel="stylesheet" href="../user_layout/user_page.css">
+  <link rel="stylesheet" href="../style/profit.css">
+  
   <style>
 
         *{
@@ -126,7 +63,7 @@ while ($row = mysqli_fetch_array($query_run)) {
 
 
 
-  <div style="position: sticky; top:0; display: inline; z-index:1;">
+  <div style="position: sticky; top:0; display: inline;">
 
   
 
@@ -151,15 +88,82 @@ while ($row = mysqli_fetch_array($query_run)) {
 <div class="container" style="margin:20px;">
 
      
-<div class="layout" style="  background-color: white; width: 90%; height:800; float:right; padding:7px;">
+<div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-<div id="chartContainer" style="height: 370px; width: 100%; 
-  position: sticky;top: 80px; "></div>
-<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+<a style="float:right; " href="../admin_layout_profitYear/show_profit.php"><i style="font-size: 40px;" class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
 
+   <h1 class="t_profit">Profit Calulation And Update</h1>
+
+
+   <?php
+
+if(isset($_GET['id'])){
+
+    $profit_id = mysqli_real_escape_string($conn,($_GET['id']));
+    $query = "SELECT*FROM profitchart WHERE id=' $profit_id ';";
+    $query_run=mysqli_query($conn,$query);
+
+    if(mysqli_num_rows($query_run)>0){
+
+        $profit = mysqli_fetch_array($query_run);
+
+        
+
+         ?>
+  
+   <form action="update_fun.php" method="post">
+
+   <input type="hidden" value="<?= $profit['id'];?>" name="id">
+
+   <label for="" class="head">Enter Year</label><br>
+   <input class="t_field" value="<?= $profit['year'];?>" type="year" name="year" id="" placeholder="Enter Year">
+   <br>
+
+   <label for="" class="head">Annual Income</label><br>
+   <input class="t_field" value="<?= $profit['income'];?>" type="text" id="income" name="income"  placeholder="Enter Income.." required>
+   <br>
+
+   <label for="" class="head">Annual Expentiture</label><br>
+   <input class="t_field" value="<?= $profit['expense'];?>" type="text" id="expence" name="expense"  placeholder="Enter Expence.." required>
+   <br>
+   
+   <label for="" class="head">Annual Profit</label><br>
+   <div class="a_field" value="<?= $profit['profit'];?>" id="answer"  type="text"></div>
+   <br>
+
+   <label for="" class="head">Re-enter Above Profit</label><br>
+   <input class="t_field" value="<?= $profit['profit'];?>" type="text"  name="profit"  placeholder="Enter Profit.." required>
+   <br>
+
+   
+   
+   <button class="b_btn" type="submit" name="p_update">Update</button>
+  
+
+   </form>
+
+   
+   <br>
+   <button class="c_btn" type="submit" name="cal" onclick="profi()">Calculate</button>
+   <br>
+   
+   
+   <?php 
+
+}
+
+               else{
+
+                echo"<h4>No such Id Found</h4>";
+              
+            }
+
+            }
+
+?>
+
+  
 </div>
-
-
 
 
 <nav class="main-menu">
@@ -168,7 +172,7 @@ while ($row = mysqli_fetch_array($query_run)) {
             <br>
             <ul>
                 <li>
-                    <a href="dashboard.php">
+                    <a href="https://jbfarrow.com">
                         <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text">
                            Community Dashboard
@@ -261,25 +265,6 @@ while ($row = mysqli_fetch_array($query_run)) {
                         </span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="../admin_layout_profit/show_profit.php">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                        <span class="nav-text">
-                            Profit Handling
-                        </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../admin_layout_profitYear/show_profit.php">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                        <span class="nav-text">
-                            Year Profit Chart
-                        </span>
-                    </a>
-                </li>
-
                 
             </ul>
 
@@ -298,6 +283,8 @@ while ($row = mysqli_fetch_array($query_run)) {
         </nav> 
         
       
+
+    <script src="../style/profit.js"></script>
 
   </body>
 
