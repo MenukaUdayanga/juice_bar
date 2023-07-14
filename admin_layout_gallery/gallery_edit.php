@@ -194,14 +194,13 @@ if(isset($_GET['id'])){
             <br>
             <br>
             <ul>
-                <li>
-                    <a href="https://jbfarrow.com">
+            <li>
+                    <a href="../admin_layout/dashboard.php">
                         <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text">
                            Community Dashboard
                         </span>
                     </a>
-                  
                 </li>
                 <li class="has-subnav">
                     <a href="select_users.php">
@@ -292,6 +291,15 @@ if(isset($_GET['id'])){
                     <i class="fa fa-money" aria-hidden="true"></i>
                         <span class="nav-text">
                             Profit Handling
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../admin_layout_profitYear/show_profit.php">
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Annual Profit
                         </span>
                     </a>
                 </li>

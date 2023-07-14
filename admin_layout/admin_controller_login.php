@@ -202,7 +202,7 @@ window.onclick = function(event) {
             <br>
             <ul>
                 <li>
-                    <a href="https://jbfarrow.com">
+                    <a href="dashboard.php">
                         <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text">
                            Community Dashboard
@@ -302,6 +302,14 @@ window.onclick = function(event) {
                     <i class="fa fa-money" aria-hidden="true"></i>
                         <span class="nav-text">
                             Profit Handling
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin_layout_profitYear/show_profit.php">
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Annual Profit
                         </span>
                     </a>
                 </li>

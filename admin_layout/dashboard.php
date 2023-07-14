@@ -273,9 +273,9 @@ while ($row = mysqli_fetch_array($query_run)) {
 
                 <li>
                     <a href="../admin_layout_profitYear/show_profit.php">
-                    <i class="fa fa-money" aria-hidden="true"></i>
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Year Profit Chart
+                            Annual Profit
                         </span>
                     </a>
                 </li>

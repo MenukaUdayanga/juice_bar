@@ -205,7 +205,7 @@ session_start();
             <br>
             <ul>
                 <li>
-                    <a href="https://jbfarrow.com">
+                    <a href="dashboard">
                         <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text">
                            Community Dashboard
@@ -303,6 +303,15 @@ session_start();
                     <i class="fa fa-money" aria-hidden="true"></i>
                         <span class="nav-text">
                             Profit Handling
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../admin_layout_profitYear/show_profit.php">
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Annual Profit
                         </span>
                     </a>
                 </li>

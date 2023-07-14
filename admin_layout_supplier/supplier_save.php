@@ -145,14 +145,13 @@ require_once "../login_database/dbc.php";
             <br>
             <br>
             <ul>
-                <li>
-                    <a href="https://jbfarrow.com">
+                < <li>
+                    <a href="../admin_layout/dashboard.php">
                         <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text">
                            Community Dashboard
                         </span>
                     </a>
-                  
                 </li>
                 <li class="has-subnav">
                     <a href="../admin_layout/select_users.php">
@@ -245,6 +244,15 @@ require_once "../login_database/dbc.php";
                     <i class="fa fa-money" aria-hidden="true"></i>
                         <span class="nav-text">
                             Profit Handling
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../admin_layout_profitYear/show_profit.php">
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Annual Profit
                         </span>
                     </a>
                 </li>
