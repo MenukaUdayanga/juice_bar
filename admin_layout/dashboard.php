@@ -79,6 +79,7 @@ while ($row = mysqli_fetch_array($query_run)) {
     </script>
 
   <link rel="stylesheet" href="../user_layout/user_page.css">
+  <link rel="stylesheet" href="../style/a_dashboard.css">
   <style>
 
         *{
@@ -148,14 +149,84 @@ while ($row = mysqli_fetch_array($query_run)) {
 
 
     
-<div class="container" style="margin:20px;">
+<div class="container" style="margin:20px; ">
 
      
-<div class="layout" style="  background-color: white; width: 90%; height:800; float:right; padding:7px;">
+<div class="layout" style="  background-color: white; width: 90%; height:800; float:right; padding:7px;  ">
 
-<div id="chartContainer" style="height: 370px; width: 100%; 
-  position: sticky;top: 80px; "></div>
+<div id="chartContainer" style="height: 370px; width: 100%; "></div>
 <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
+
+<div class="l_card">
+
+
+ <div class="f_handle">
+  <a style="text-decoration: none; color:black;" href="../admin_layout/select_users.php"><div class="f_card">  <i style="font-size:100px; padding-top:30%; padding-left:55%; color:black;" class="fa fa-users" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> User Controller</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../admin_layout/admin_controller_login.php"><div class="f_card">  <i style="font-size:100px; padding-top:40%; padding-left:120%; color:black;" class="fa fa-lock" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> Admin Controller</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../admin_layout_order/order_controller.php"><div class="f_card">  <i style="font-size:100px; padding-top:30%; padding-left:70%; color:black;" class="fa fa-book" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> Order Controller</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../admin_layout_edit/edit_inter.php"><div class="f_card">  <i style="font-size:100px; padding-top:30%; padding-left:80%; color:black;" class="fa fa-plus-circle" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3>Juice Item Controller</h3></div></a>
+</div>
+ 
+</div>
+
+
+
+
+<div class="f_handle">
+<a style="text-decoration: none; color:black;" href="../admin_layout_sp_order_controller/sp_order_controller.php"><div class="f_card">  <i style="font-size:100px; padding-top:50%; padding-left:100%; color:black;" class="fa fa-bookmark" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> Special Order Controller</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../admin_layout_gallery/admin_gallery_select.php"><div class="f_card">  <i style="font-size:100px; padding-top:35%; padding-left:55%; color:black;" class="fa fa-picture-o" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> Gallery Controller</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../admin_layout_complaint/user_complaint_con.php"><div class="f_card">  <i style="font-size:100px; padding-top:40%; padding-left:60%; color:black;" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> Customer Complaint</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../admin_layout_comment/comment_controller.php"><div class="f_card">  <i style="font-size:100px; padding-top:40%; padding-left:60%; color:black;" class="fa fa-comment-o" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3>Customer Comment</h3></div></a>
+</div>
+ 
+</div>
+
+
+<div class="f_handle">
+<a style="text-decoration: none; color:black;" href="../admin_layout_contact/contact.php"><div class="f_card">  <i style="font-size:100px; padding-top:50%; padding-left:80%; color:black;" class="fa fa-phone-square" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> Contact Us</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../admin_layout_supplier/supplier.php"><div class="f_card">  <i style="font-size:100px; padding-top:45%; padding-left:55%; color:black;" class="fa fa-truck" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> Supplier Controller</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../admin_layout_profit/show_profit.php"><div class="f_card">  <i style="font-size:100px; padding-top:40%; padding-left:50%; color:black;" class="fa fa-money" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> Profit Handling</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../admin_layout_profitYear/show_profit.php"><div class="f_card">  <i style="font-size:100px; padding-top:40%; padding-left:60%; color:black;" class="fa fa-bullhorn" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3>Annual Profit</h3></div></a>
+</div>
+ 
+</div>
+
+
+
+</div>
+
+
 
 </div>
 

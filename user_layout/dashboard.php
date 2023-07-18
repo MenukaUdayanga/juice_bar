@@ -10,7 +10,9 @@ session_start();
 <html>
   <head>
 
+  <link rel="stylesheet" href="../style/a_dashboard.css">
   <link rel="stylesheet" href="user_page.css">
+  <link rel="stylesheet" href="../style/u_dashboard.css">
   
   <style>
 
@@ -60,7 +62,7 @@ session_start();
 
 
 
-  <div style="position: sticky; top:0; display: inline;">
+  <div style="position: sticky; top:0; display: inline; z-index: 1;">
 
   
 
@@ -95,7 +97,88 @@ else{
 
 <div class="layout" style="  background-color: white; width: 90%; height:100%; float:right; padding:7px;">
 
-   <h1>I can do that</h1>
+  
+
+<div class="l_card">
+
+
+<div class="f_handle">
+<a style="text-decoration: none; color:black;" href="../user_layout_order/user_order.php"><div class="f_card">  <i style="font-size:100px; padding-top:30%; padding-left:70%; color:black;" class="fa fa-book" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3>Customer Order</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../user_special_order/user_sp_order.php"><div class="f_card">  <i style="font-size:100px; padding-top:50%; padding-left:100%; color:black;" class="fa fa-bookmark" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3>User Special Order</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../user_avilable_juice/avilable_juice.php"><div class="f_card">  <i style="font-size:100px; padding-top:35%; padding-left:55%; color:black;" class="fa fa-picture-o" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3>Juice Gallery</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../user_layout_complaint/user_complaint.php"><div class="f_card">  <i style="font-size:100px; padding-top:40%; padding-left:60%; color:black;" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> Customer Complaint</h3></div></a>
+</div>
+
+</div>
+
+
+
+
+<div class="f_handle">
+<a style="text-decoration: none; color:black;" href="../user_layout_comment/user_comment.php"><div class="f_card">  <i style="font-size:100px; padding-top:40%; padding-left:60%; color:black;" class="fa fa-comment-o" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3>Customer Comment</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../user_layout_contact/user_contact.php"><div class="f_card">  <i style="font-size:100px; padding-top:50%; padding-left:80%; color:black;" class="fa fa-phone-square" aria-hidden="true"></i>
+  <div style="text-align:center; padding-top:8%;"><h3> Contact Us</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../user_layout_about/about_us.php"><div class="f_card">  <i style="font-size:100px; padding-top:80%; padding-left:150%; color:black;"  class="fa fa-info fa-2x"></i>
+ <div style="text-align:center; padding-top:8%;"><h3>About Us</h3></div></a>
+</div>
+
+<a style="text-decoration: none; color:black;" href="../user_layout_map/map.php"><div class="f_card">  <i style="font-size:100px; padding-top:70%; padding-left:130%; color:black;" class="fa fa-map-marker fa-2x"></i>
+ <div style="text-align:center; padding-top:8%;"><h3>Customer Comment</h3></div></a>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="../admin_layout_gallery/images/one.jpg" style="width:100%">
+  <div class="text">Our Juice</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="../admin_layout_gallery/images/two.jpg" style="width:100%">
+  <div class="text">Quality Juice</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="../admin_layout_gallery/images/three.jpg" style="width:100%">
+  <div class="text">Fresh Juice</div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+
+</div> 
 
 </div>
 
@@ -195,8 +278,7 @@ else{
             </ul> -->
         </nav> 
         
-      
-
+    <script src="../style/slide.js"></script>
   </body>
 
 

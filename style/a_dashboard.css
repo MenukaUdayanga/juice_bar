@@ -1,0 +1,29 @@
+
+.f_card{
+
+    width: 20%;
+    height: 200px;
+    border: 2px solid rgb(187, 29, 29);
+    margin-right: 5%;
+    cursor: pointer;
+   
+}
+
+.f_handle{
+    
+    margin-top: 5%;
+    display: flex;
+    
+}
+
+.l_card{
+
+padding-bottom: 10%;
+
+}
+
+.f_card:hover{
+    background-color: antiquewhite;
+    border: 3px solid rgb(97, 97, 97);
+    
+}
