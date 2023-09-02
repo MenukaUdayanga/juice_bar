@@ -138,7 +138,7 @@ else{
 </div>
 
 <a style="text-decoration: none; color:black;" href="../user_layout_map/map.php"><div class="f_card">  <i style="font-size:100px; padding-top:70%; padding-left:130%; color:black;" class="fa fa-map-marker fa-2x"></i>
- <div style="text-align:center; padding-top:8%;"><h3>Customer Comment</h3></div></a>
+ <div style="text-align:center; padding-top:8%;"><h3>Location</h3></div></a>
 </div>
 
 </div>

@@ -1,11 +1,12 @@
 <?php 
 
 $dbServerName ="localhost";
-$dbUserName ="root";
-$dbPassword ="";
+$dbUserName ="Menuka";
+$dbPassword ="Menuka";
 $dbName ="newjuicebar";
+$port ="3308";
 
-$conn = mysqli_connect($dbServerName,$dbUserName,$dbPassword,$dbName );
+$conn = mysqli_connect($dbServerName,$dbUserName,$dbPassword,$dbName,$port );
 
 if(!$conn){
 
