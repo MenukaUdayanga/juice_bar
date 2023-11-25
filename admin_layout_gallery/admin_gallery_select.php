@@ -301,14 +301,6 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
 
-                <li>
-                    <a href="../admin_layout_profit/show_profit.php">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                        <span class="nav-text">
-                            Profit Handling
-                        </span>
-                    </a>
-                </li>
 
                 <li>
                     <a href="../admin_layout_profitYear/show_profit.php">

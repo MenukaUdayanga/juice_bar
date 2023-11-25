@@ -212,9 +212,7 @@ while ($row = mysqli_fetch_array($query_run)) {
   <div style="text-align:center; padding-top:8%;"><h3> Supplier Controller</h3></div></a>
 </div>
 
-<a style="text-decoration: none; color:black;" href="../admin_layout_profit/show_profit.php"><div class="f_card">  <i style="font-size:100px; padding-top:40%; padding-left:50%; color:black;" class="fa fa-money" aria-hidden="true"></i>
-  <div style="text-align:center; padding-top:8%;"><h3> Profit Handling</h3></div></a>
-</div>
+
 
 <a style="text-decoration: none; color:black;" href="../admin_layout_profitYear/show_profit.php"><div class="f_card">  <i style="font-size:100px; padding-top:40%; padding-left:60%; color:black;" class="fa fa-bullhorn" aria-hidden="true"></i>
   <div style="text-align:center; padding-top:8%;"><h3>Annual Profit</h3></div></a>
@@ -333,14 +331,7 @@ while ($row = mysqli_fetch_array($query_run)) {
                     </a>
                 </li>
 
-                <li>
-                    <a href="../admin_layout_profit/show_profit.php">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                        <span class="nav-text">
-                            Profit Handling
-                        </span>
-                    </a>
-                </li>
+               
 
                 <li>
                     <a href="../admin_layout_profitYear/show_profit.php">
